@@ -1,0 +1,16 @@
+---
+title: "workshop"
+output: html_document
+date: "2022-10-31"
+---
+
+```{r}
+library(tidyverse)
+library(magrittr)
+```
+
+
+```{r}
+
+```
+
