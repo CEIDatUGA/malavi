@@ -4,13 +4,22 @@ output: html_document
 date: "2022-10-31"
 ---
 
-```{r}
+```{r, message = F}
 library(tidyverse)
 library(magrittr)
+library(here)
 ```
 
 
-```{r}
+```{r, message = F}
+host <- read_tsv(here("data/MalAvi_9131431.tsv"))
+vec <- read_tsv(here("data/MalAvi_8718204.tsv"))
 
+host_eao <- host %>% filter(continent == c("Europe", "Africa", "Unknown"))
+vec_eao <- vec %>% filter(country == c("Austria", "Bulgaria", "Cameroon", "Czech Republic", "France", "Germany", "Italy", "Lithuania", "Madagascar", "Portugal", "Russia", "Spain", "Switzerland", "Turkey"))
 ```
+
+# Summary of data availability
+
+# Preliminary plots/maps
 
