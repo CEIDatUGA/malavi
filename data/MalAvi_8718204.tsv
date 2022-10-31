@@ -1,0 +1,428 @@
+#no	Lineage_Name	found	tested	vector_species	method	country	site	Reference_Name	comment
+1	ACCTAC01	 	 	Coquillettidia aurites	PCR, head and thorax	Cameroon	Ndibi	Njabo et al 2009	 
+2	ACCTAC01	 	 	Coquillettidia aurites	PCR, head and thorax	Cameroon	Nkouak	Njabo et al 2009	 
+3	AEDSCA01	 	 	Ochlerotatus scapularis	PCR, head and thorax	Brazil	 	Guimaraes et al 2021	 
+4	AEDTAE01	 	 	Ochlerotatus taeniorhynchus	PCR, head and thorax	Mexico	Socorro Island	Carlson et al 2011	 
+5	AEDTAE02	 	 	Ochlerotatus taeniorhynchus	PCR, head and thorax	Mexico	Socorro Island	Carlson et al 2011	 
+6	AEDTAE03	 	 	Ochlerotatus taeniorhynchus	PCR, head and thorax	Mexico	Socorro Island	Carlson et al 2011	 
+7	AEDTAE04	 	 	Ochlerotatus taeniorhynchus	PCR, head and thorax	Mexico	Socorro Island	Carlson et al 2011	 
+8	AEDTAE05	 	 	Ochlerotatus taeniorhynchus	PCR, head and thorax	Mexico	Socorro Island	Carlson et al 2011	 
+9	AEDTAE06	 	 	Ochlerotatus taeniorhynchus	PCR, head and thorax	Mexico	Socorro Island	Carlson et al 2011	 
+10	AEDVEX01	 	 	Aedes vexans	PCR, head and thorax	Turkey	 	Inci et al 2012	 
+11	AEESO01	 	 	Aedes esoensis	PCR, thorax, unfed	Japan	Kushiro Zoo	Ejiri et al 2011c	 
+12	AEESO02	 	 	Aedes esoensis	PCR, abdomen, blood filled	Japan	Kushiro Zoo	Ejiri et al 2011c	blood-source Cervus nippon yesoensis
+13	AFTRU5	1	 	Culex pipiens	PCR, abdomen with blood meal	Italy	 	Martinez-de la Puente et al 2015	 
+14	AFTRU5	 	 	Culex pipiens	PCR, head and thorax	Switzerland	Dorigny, Lausanne	Lalubin et al 2013	 
+15	ASOT06	1	86	Simulium vernum	PCR , whole mosquitoes	Germany	Eastern Westphalia	Chakarov et al 2020	 
+16	ASOT06	1	35	Simulium angustipes	PCR , whole mosquitoes	Germany	Eastern Westphalia	Chakarov et al 2020	 
+17	BLUTI09	 	 	Culicoides circumscriptus	PCR, mosquitoes without blood meals	Spain	Donana National Park	Ferraguti et al 2013b	 
+18	BT2	1	164	Simulium vernum	PCR, mosquitoes without blood meals	Czech Republic	Fláje Dam	Synek et al 2016	In nests of Aegolius funereus
+19	BT7	 	 	Culex sasai	PCR, abdomen with blood meal	Japan	 	Kim et al 2009a	 
+20	BUBT3	1	35	Simulium angustipes	PCR , whole mosquitoes	Germany	Eastern Westphalia	Chakarov et al 2020	 
+21	BUBT3	1	10	Simulium lundstromi	PCR , whole mosquitoes	Germany	Eastern Westphalia	Chakarov et al 2020	 
+22	BUL07	1	45	Uranotaenia alboabdominalis	PCR, head and thorax	Madagascar	Maromizaha	Schmid et al 2017a	 
+23	BUL07	1	6	Uranotaenia neireti	PCR, head and thorax	Madagascar	Maromizaha	Schmid et al 2017a	 
+24	BUTBUT03	3	86	Simulium vernum	PCR , whole mosquitoes	Germany	Eastern Westphalia	Chakarov et al 2020	 
+25	BUVIR03	3	 	Simulium silvestre	PCR , whole mosquitoes	United States	Gothic	Murdock et al 2015	Number found = positive pools of 5 blackflies
+26	CAMRUB01	 	 	Psorophora discrucians	PCR , whole mosquitoes	Brazil	Mata Seca State Park	Ferreira et al 2016	1 pool postive / 173 pools tested (1435 mosquitoes)
+27	CARFLA04	1	 	Simulium silvestre	PCR , whole mosquitoes	United States	Gothic	Murdock et al 2015	Number found = positive pools of 5 blackflies
+28	CB1	12	 	Simulium silvestre	PCR , whole mosquitoes	United States	Gothic	Murdock et al 2015	Number found = positive pools of 5 blackflies
+29	CCF4	 	 	Culicoides segnis	PCR, thorax, unfed	Czech Republic	Bohemia Forest, Vltava river valley	Synek et al 2013b	 
+30	CIRCUM01	 	 	Culicoides circumscriptus	PCR, mosquitoes without blood meals	Spain	Donana National Park	Ferraguti et al 2013b	 
+31	CIRCUM02	 	 	Culicoides circumscriptus	PCR, mosquitoes without blood meals	Spain	Donana National Park	Ferraguti et al 2013b	 
+32	CIRCUM03	 	 	Culicoides circumscriptus	PCR, mosquitoes without blood meals	Spain	Donana National Park	Ferraguti et al 2013b	 
+33	CIRCUM05	1	 	Culex pipiens	PCR, abdomen with blood meal	Italy	 	Martinez-de la Puente et al 2015	 
+34	CIRCUM05	 	 	Culicoides circumscriptus	PCR, mosquitoes without blood meals	Spain	Donana National Park	Ferraguti et al 2013b	 
+35	CNEORN01	1	 	Simulium silvestre	PCR , whole mosquitoes	United States	Gothic	Murdock et al 2015	Number found = positive pools of 5 blackflies
+36	COBRA02	1	 	Simulium silvestre	PCR , whole mosquitoes	United States	Gothic	Murdock et al 2015	Number found = positive pools of 5 blackflies
+37	COBRA05	1	 	Simulium silvestre	PCR , whole mosquitoes	United States	Gothic	Murdock et al 2015	Number found = positive pools of 5 blackflies
+38	COCOR03	1	86	Simulium vernum	PCR , whole mosquitoes	Germany	Eastern Westphalia	Chakarov et al 2020	 
+39	COCOR09	1	86	Simulium vernum	PCR , whole mosquitoes	Germany	Eastern Westphalia	Chakarov et al 2020	 
+40	COCOR12	1	1	Simulium aureum	PCR , whole mosquitoes	Germany	Eastern Westphalia	Chakarov et al 2020	 
+41	COCOR13	3	35	Simulium angustipes	PCR , whole mosquitoes	Germany	Eastern Westphalia	Chakarov et al 2020	 
+42	COCOR13	1	10	Simulium lundstromi	PCR , whole mosquitoes	Germany	Eastern Westphalia	Chakarov et al 2020	 
+43	COCOR13	1	18	Simulium rubzovianum	PCR , whole mosquitoes	Germany	Eastern Westphalia	Chakarov et al 2020	 
+44	COCOR15	 	 	Culex pipiens	PCR , whole mosquitoes	Japan	Nihon University farm	Shirotani et al 2009	1 positive pool/276 pools tested (811 mosquitoes
+45	COLBF01	1	 	Greniera denaria	PCR , whole mosquitoes	United States	Gothic	Murdock et al 2015	Number found = positive pools of 5 blackflies
+46	COLBF01	4	 	Simulium silvestre	PCR , whole mosquitoes	United States	Gothic	Murdock et al 2015	Number found = positive pools of 5 blackflies
+47	COLBF03	1	 	Simulium silvestre	PCR , whole mosquitoes	United States	Gothic	Murdock et al 2015	Number found = positive pools of 5 blackflies
+48	COLBF04	1	 	Simulium silvestre	PCR , whole mosquitoes	United States	Gothic	Murdock et al 2015	Number found = positive pools of 5 blackflies
+49	COLBF06	2	 	Simulium silvestre	PCR , whole mosquitoes	United States	Gothic	Murdock et al 2015	Number found = positive pools of 5 blackflies
+50	COLBF08	1	 	Simulium silvestre	PCR , whole mosquitoes	United States	Gothic	Murdock et al 2015	Number found = positive pools of 5 blackflies
+51	COLBF09	1	 	Simulium silvestre	PCR , whole mosquitoes	United States	Gothic	Murdock et al 2015	Number found = positive pools of 5 blackflies
+52	COLBF10	6	 	Simulium silvestre	PCR , whole mosquitoes	United States	Gothic	Murdock et al 2015	Number found = positive pools of 5 blackflies
+53	COLBF14	1	 	Simulium silvestre	PCR , whole mosquitoes	United States	Gothic	Murdock et al 2015	Number found = positive pools of 5 blackflies
+54	COLBF15	1	 	Simulium silvestre	PCR , whole mosquitoes	United States	Gothic	Murdock et al 2015	Number found = positive pools of 5 blackflies
+55	COLBF16	3	 	Simulium silvestre	PCR , whole mosquitoes	United States	Gothic	Murdock et al 2015	Number found = positive pools of 5 blackflies
+56	COLBF17	1	 	Simulium silvestre	PCR , whole mosquitoes	United States	Gothic	Murdock et al 2015	Number found = positive pools of 5 blackflies
+57	COLBF19	1	 	Simulium silvestre	PCR , whole mosquitoes	United States	Gothic	Murdock et al 2015	Number found = positive pools of 5 blackflies
+58	COLBF21	1	 	Simulium silvestre	PCR , whole mosquitoes	United States	Gothic	Murdock et al 2015	Number found = positive pools of 5 blackflies
+59	COLBF22	1	 	Simulium silvestre	PCR , whole mosquitoes	United States	Gothic	Murdock et al 2015	Number found = positive pools of 5 blackflies
+60	COLBF23	3	 	Simulium silvestre	PCR , whole mosquitoes	United States	Gothic	Murdock et al 2015	Number found = positive pools of 5 blackflies
+61	COLBF24	2	 	Simulium silvestre	PCR , whole mosquitoes	United States	Gothic	Murdock et al 2015	Number found = positive pools of 5 blackflies
+62	COLBF25	1	 	Simulium silvestre	PCR , whole mosquitoes	United States	Gothic	Murdock et al 2015	Number found = positive pools of 5 blackflies
+63	COLBF28	1	 	Simulium silvestre	PCR , whole mosquitoes	United States	Gothic	Murdock et al 2015	Number found = positive pools of 5 blackflies
+64	COLBF29	1	 	Simulium silvestre	PCR , whole mosquitoes	United States	Gothic	Murdock et al 2015	Number found = positive pools of 5 blackflies
+65	COLBF31	1	 	Simulium silvestre	PCR , whole mosquitoes	United States	Gothic	Murdock et al 2015	Number found = positive pools of 5 blackflies
+66	COLBF32	1	 	Simulium silvestre	PCR , whole mosquitoes	United States	Gothic	Murdock et al 2015	Number found = positive pools of 5 blackflies
+67	COLL1	1	299	Culex pipiens	PCR , whole mosquitoes	France	Mejanes	Zele et al 2014	 
+68	COLL1	 	 	Culex pipiens	PCR, head and thorax	Switzerland	Dorigny, Lausanne	Lalubin et al 2013	 
+69	COLL1	 	 	Culex perexiguus	PCR, head and thorax	Spain	Canada de los Pajaros	Ferraguti et al 2013a	 
+70	COLL7	1	96	Uranotaenia sp.	PCR, head and thorax	Madagascar	Maromizaha	Schmid et al 2017a	 
+71	COQUI01	 	 	Coquillettidia aurites	PCR, head and thorax	Cameroon	Ndibi	Njabo et al 2009	 
+72	COQUI01	 	 	Coquillettidia aurites	PCR, head and thorax	Cameroon	Nkouak	Njabo et al 2009	 
+73	COQUI02	 	 	Coquillettidia aurites	PCR, head and thorax	Cameroon	Nkouak	Njabo et al 2009	 
+74	COQUI03	 	 	Coquillettidia metallica	PCR, head and thorax	Cameroon	Ndibi	Njabo et al 2009	 
+75	COQUI04	 	 	Coquillettidia aurites	PCR, head and thorax	Cameroon	Nkouak	Njabo et al 2009	 
+76	COQUI05	 	 	Coquillettidia aurites	PCR, head and thorax	Cameroon	Ndibi	Njabo et al 2009	 
+77	COQUI06	 	 	Coquillettidia aurites	PCR, thorax, absence of host DNA	Cameroon	 	Njabo et al 2011	 
+78	COQUI06	 	 	Coquillettidia pseudoconopas	PCR, thorax, absence of host DNA	Cameroon	 	Njabo et al 2011	 
+79	COQUI07	 	 	Coquillettidia aurites	PCR, thorax, absence of host DNA	Cameroon	 	Njabo et al 2011	 
+80	COQUI08	 	 	Coquillettidia aurites	PCR, thorax, absence of host DNA	Cameroon	 	Njabo et al 2011	 
+81	CUKI1	 	 	Culicoides kibunensis	PCR, thorax, unfed	Czech Republic	Bohemia Forest, Vltava river valley	Synek et al 2013b	 
+82	CUKI1	 	 	Culicoides segnis	PCR, thorax, unfed	Czech Republic	Bohemia Forest, Vltava river valley	Synek et al 2013b	 
+83	CULCIR01	 	 	Culicoides circumscriptus	PCR , whole mosquitoes	Bulgaria	Kalimok	Bobeva et al 2013	 
+84	CULEX01	 	 	Culex sp.	PCR , whole mosquitoes	Brazil	Mata Seca State Park	Ferreira et al 2016	1 pool postive / 43 pools tested (314 mosquitoes)
+85	CULEX02	 	 	Culex sp.	PCR , whole mosquitoes	Brazil	Mata Seca State Park	Ferreira et al 2016	1 pool postive / 43 pools tested (314 mosquitoes)
+86	CULEX03	 	 	Culex sp.	PCR , whole mosquitoes	Brazil	Mata Seca State Park	Ferreira et al 2016	1 pool postive / 43 pools tested (314 mosquitoes)
+87	CULEX04	 	 	Culex sp.	PCR , whole mosquitoes	Brazil	Mata Seca State Park	Ferreira et al 2016	1 pool postive / 43 pools tested (314 mosquitoes)
+88	CULEX05	 	 	Culex sp.	PCR, head and thorax	Brazil	 	Guimaraes et al 2021	 
+89	CULEX06	 	 	Culex sp.	PCR, head and thorax	Brazil	 	Guimaraes et al 2021	 
+90	CULKIB01	 	 	Culicoides kibunensis	PCR, thorax, unfed	Germany	Mooswald Forest	Santiago-Alarcon et al 2013	 
+91	CULMAX01	 	 	Culex maxi	PCR, head and thorax	Brazil	 	Guimaraes et al 2021	 
+92	CULSCO01	 	 	Culicoides scoticus	PCR, thorax, unfed	Germany	Mooswald Forest	Santiago-Alarcon et al 2013	 
+93	CXBIT01	 	 	Culex bitaeniorhynchus	PCR, thorax, unfed	Japan	Sakata wetland	Kim & Tsuda 2012	 
+94	CXINA01	 	 	Culex inatomii	PCR, thorax, unfed	Japan	Sakata wetland	Kim & Tsuda 2012	 
+95	CXINA01	1	1314	Culex inatomii	PCR, oocysts and sporozoites	Japan	Sakata wetland	Kim & Tsuda 2015	 
+96	CXINA02	4	1314	Culex inatomii	PCR, oocysts and sporozoites	Japan	Sakata wetland	Kim & Tsuda 2015	 
+97	CXNEA01	 	 	Culex neavei	PCR, thorax, absence of host DNA	Cameroon	 	Njabo et al 2011	 
+98	CXNEA02	 	 	Culex neavei	PCR, thorax, absence of host DNA	Cameroon	 	Njabo et al 2011	 
+99	CXNIG01	 	 	Culex nigropunctatus	PCR , whole mosquitoes	Japan	Iriomote Island	Ejiri et al 2011b	1 pool positive/3 pools tested (11 mosquitoes)
+100	CXNIG01	 	 	Culex nigropunctatus	PCR , whole mosquitoes	Japan	Ishigaki Island	Ejiri et al 2011b	1 positive/6 tested
+101	CXPER01	 	 	Culex perfidiosus	PCR, thorax, absence of host DNA	Cameroon	 	Njabo et al 2011	 
+102	CXPER01	 	 	Culex neavei	PCR, thorax, absence of host DNA	Cameroon	 	Njabo et al 2011	 
+103	CXPER01	 	 	Culex perexiguus	PCR, head and thorax	Spain	Canada de los Pajaros	Ferraguti et al 2013a	 
+104	CXPER02	 	 	Culex perfidiosus	PCR, thorax, absence of host DNA	Cameroon	 	Njabo et al 2011	 
+105	CXPER03	 	 	Culex perfidiosus	PCR, thorax, absence of host DNA	Cameroon	 	Njabo et al 2011	 
+106	CXPIP01	 	 	Culex pipiens	PCR, mosquitoes without blood meals	United States	 	Kimura et al 2010	 
+107	CXPIP02	 	 	Culex pipiens	PCR, mosquitoes without blood meals	United States	 	Kimura et al 2010	 
+108	CXPIP03	 	 	Culex pipiens	PCR, mosquitoes without blood meals	United States	 	Kimura et al 2010	 
+109	CXPIP04	 	 	Culex pipiens	PCR, mosquitoes without blood meals	United States	 	Kimura et al 2010	 
+110	CXPIP05	 	 	Culex pipiens	PCR, mosquitoes without blood meals	United States	 	Kimura et al 2010	 
+111	CXPIP06	 	 	Culex pipiens	PCR, mosquitoes without blood meals	United States	 	Kimura et al 2010	 
+112	CXPIP06	 	 	Culex quinquefasciatus	Unkown	Japan	Chichijima	Inumaru et al unpubl a	1/78 positive
+113	CXPIP06	 	 	Culex boninensis	Unkown	Japan	Chichijima	Inumaru et al unpubl a	12/45 positive
+114	CXPIP07	 	 	Culex pipiens	PCR, mosquitoes without blood meals	United States	 	Kimura et al 2010	 
+115	CXPIP09	 	 	Aedes albopictus	PCR, abdomen	Japan	Nihon University farm	Odagawa et al unpubl	 
+116	CXPIP09	 	 	Culex pipiens	PCR , whole mosquitoes	Japan	 	Ejiri et al 2009	 
+117	CXPIP09	 	 	Culex pipiens	PCR, abdomen with blood meal	Japan	 	Kim et al 2009b	 
+118	CXPIP09	 	 	Culex pipiens	PCR, mosquitoes without blood meals	Japan	 	Kim et al 2009b	 
+119	CXPIP09	 	 	Culex pipiens	PCR, mosquitoes without blood meals	Japan	 	Kim et al 2009b	 
+120	CXPIP09	 	 	Culex pipiens	PCR, thorax, absence of host DNA	Japan	Rinshi-no-mori Park	Kim & Tsuda 2010	 
+121	CXPIP09	3	533	Culex pipiens	PCR, oocysts and sporozoites	Japan	Rinshi-no-mori Park	Kim & Tsuda 2015	 
+122	CXPIP09	 	 	Culex pipiens	PCR, thorax, blood filled	Japan	Ueno Zoological Gardens Tokyo	Ejiri et al 2011a	 
+123	CXPIP09	 	 	Culex pipiens	PCR, thorax, unfed	Japan	Sakata wetland	Kim & Tsuda 2012	 
+124	CXPIP09	 	 	Culex pipiens	PCR , whole mosquitoes	Japan	Nihon University farm	Shirotani et al 2009	1 positive pool/276 pools tested (811 mosquitoes
+125	CXPIP09	 	 	Culex pipiens	PCR, head-thorax/abdomen	Japan	Nihon University farm	Odagawa et al unpubl	 
+126	CXPIP09	 	 	Culex pipiens	PCR, abdomen, blood filled	Japan	Marinepia Aquarium	Inumaru et al 2021a	 
+127	CXPIP09	 	 	Culex pipiens	PCR, abdomen, blood filled	Japan	Marinepia	Inumaru et al 2021a	bloodfed
+128	CXPIP09	 	 	Culex inatomii	PCR, thorax, unfed	Japan	Sakata wetland	Kim & Tsuda 2012	 
+129	CXPIP09	 	 	Culex sasai	PCR, abdomen with blood meal	Japan	 	Kim et al 2009a	 
+130	CXPIP09	 	 	Lutzia vorax	PCR , whole mosquitoes	Japan	 	Ejiri et al 2009	 
+131	CXPIP09	 	 	Lutzia vorax	PCR, mosquitoes without blood meals	Japan	 	Kim et al 2009b	 
+132	CXPIP10	 	 	Culex pipiens	PCR, mosquitoes without blood meals	Japan	 	Kim et al 2009b	 
+133	CXPIP10	 	 	Culex pipiens	PCR, thorax, unfed	Japan	Sakata wetland	Kim & Tsuda 2012	 
+134	CXPIP10	 	 	Culex inatomii	PCR, thorax, unfed	Japan	Sakata wetland	Kim & Tsuda 2012	 
+135	CXPIP10	 	 	Culex perexiguus	PCR, head and thorax	Spain	Canada de los Pajaros	Ferraguti et al 2013a	 
+136	CXPIP11	 	 	Culex pipiens	PCR, thorax, absence of host DNA	Japan	Rinshi-no-mori Park	Kim & Tsuda 2010	 
+137	CXPIP12	 	 	Culex pipiens	PCR, thorax, absence of host DNA	Japan	Rinshi-no-mori Park	Kim & Tsuda 2010	 
+138	CXPIP13	 	 	Culex pipiens	PCR, thorax, absence of host DNA	Japan	Rinshi-no-mori Park	Kim & Tsuda 2010	 
+139	CXPIP14	 	 	Culex pipiens	PCR, thorax, absence of host DNA	Japan	Rinshi-no-mori Park	Kim & Tsuda 2010	 
+140	CXPIP15	 	 	Culex pipiens	PCR, abdomen, blood filled	Japan	Ueno Zoological Gardens Tokyo	Ejiri et al 2011a	 
+141	CXPIP16	 	 	Culex pipiens	PCR, abdomen, blood filled	Japan	Ueno Zoological Gardens Tokyo	Ejiri et al 2011a	 
+142	CXPIP17	 	 	Culex pipiens	PCR, abdomen, blood filled	Japan	Ueno Zoological Gardens Tokyo	Ejiri et al 2011a	 
+143	CXPIP18	 	 	Culex pipiens	PCR, abdomen, blood filled	Japan	Ueno Zoological Gardens Tokyo	Ejiri et al 2011a	 
+144	CXPIP19	 	 	Culex pipiens	PCR, abdomen, blood filled	Japan	Ueno Zoological Gardens Tokyo	Ejiri et al 2011a	 
+145	CXPIP19	 	 	Culex pipiens	PCR , whole mosquitoes	Japan	Nihon University farm	Shirotani et al 2009	1 positive pool/276 pools tested (811 mosquitoes
+146	CXPIP19	 	 	Culex pipiens	PCR, abdomen	Japan	Nihon University farm	Odagawa et al unpubl	 
+147	CXPIP20	 	 	Culex pipiens	PCR, head and thorax	Turkey	 	Inci et al 2012	 
+148	CXPIP21	 	 	Culex pipiens	PCR, head and thorax	Turkey	 	Inci et al 2012	 
+149	CXPIP22	 	 	Culex pipiens	PCR, head and thorax	Turkey	 	Inci et al 2012	 
+150	CXPIP23	 	 	Culex pipiens	PCR, head and thorax	Turkey	 	Inci et al 2012	 
+151	CXPIP23	 	 	Ochlerotatus caspius	PCR, head and thorax	Spain	Canada de los Pajaros	Ferraguti et al 2013a	 
+152	CXPIP24	1	543	Culex pipiens	PCR , whole mosquitoes	France	Tour Carbonniere	Zele et al 2014	 
+153	CXPIP25	1	149	Culex pipiens	PCR , whole mosquitoes	France	Sussargues	Zele et al 2014	 
+154	CXPIP26	1	543	Culex pipiens	PCR , whole mosquitoes	France	Tour Carbonniere	Zele et al 2014	 
+155	CXPIP27	1	299	Culex pipiens	PCR , whole mosquitoes	France	Mejanes	Zele et al 2014	 
+156	CXPIP27	1	165	Culex pipiens	PCR , whole mosquitoes	France	Marais du Vigueirat	Zele et al 2014	 
+157	CXPIP28	2	 	Culex pipiens	PCR, abdomen with blood meal	Italy	 	Martinez-de la Puente et al 2015	 
+158	CXPIP29	1	164	Culex pipiens	PCR, head and thorax	Madagascar	Maromizaha	Schmid et al 2017a	 
+159	CXPIP30	1	164	Culex pipiens	PCR, head and thorax	Madagascar	Maromizaha	Schmid et al 2017a	 
+160	CXPIP31	 	 	Culex pipiens	PCR, thorax, unfed	Japan	Kushiro Zoo	Ejiri et al 2011c	 
+161	CXPIP32	 	 	Culex pipiens	Unkown	Italy	Zoomarine	Iurescia et al unpubl	 
+162	CXPIP33	 	 	Culex pipiens	Unkown	Italy	Zoomarine	Iurescia et al unpubl	 
+163	CXPOI01	 	 	Culex poicilipes	PCR, thorax, absence of host DNA	Cameroon	 	Njabo et al 2011	 
+164	CXQUI01	 	 	Culex pipiens	PCR, thorax, unfed	Japan	Sakata wetland	Kim & Tsuda 2012	 
+165	CXQUI01	 	 	Culex quinquefasciatus	PCR , whole mosquitoes	Japan	 	Ejiri et al 2008	 
+166	CXQUI01	 	 	Culex inatomii	PCR, thorax, unfed	Japan	Sakata wetland	Kim & Tsuda 2012	 
+167	CXQUI01	2	1314	Culex inatomii	PCR, oocysts and sporozoites	Japan	Sakata wetland	Kim & Tsuda 2015	 
+168	CXQUI02	 	 	Culex quinquefasciatus	PCR , whole mosquitoes	Japan	 	Ejiri et al 2008	 
+169	CXQUI03	 	 	Culex quinquefasciatus	PCR , whole mosquitoes	Japan	 	Ejiri et al 2008	 
+170	CXQUI04	 	 	Culex quinquefasciatus	PCR, head and thorax	Mexico	Socorro Island	Carlson et al 2011	 
+171	CXRES01	 	 	Culex restuans	PCR, mosquitoes without blood meals	United States	 	Kimura et al 2010	 
+172	CXRES02	 	 	Culex restuans	PCR, mosquitoes without blood meals	United States	 	Kimura et al 2010	 
+173	CXRES03	 	 	Culex restuans	PCR, mosquitoes without blood meals	United States	 	Kimura et al 2010	 
+174	CXRES04	 	 	Culex restuans	PCR, mosquitoes without blood meals	United States	 	Kimura et al 2010	 
+175	CXRES05	 	 	Culex restuans	PCR, mosquitoes without blood meals	United States	 	Kimura et al 2010	 
+176	CXRES06	5	 	Culex restuans	PCR, abdomen with blood meal	Mexico	Park Molinas  de San Roque	Abella-Medrano et al 2018	 
+177	CXRES06	1	 	Culex restuans	PCR, abdomen with blood meal	Mexico	Francisco Xavier Clavijero Park	Abella-Medrano et al 2018	 
+178	CXRES06	2	 	Aedes quadrivittatus	PCR, abdomen with blood meal	Mexico	Xico	Abella-Medrano et al 2018	 
+179	CXRES06	1	 	Aedes quadrivittatus	PCR, abdomen with blood meal	Mexico	Francisco Xavier Clavijero Park	Abella-Medrano et al 2018	 
+180	CXRES06	1	 	Wyeomyia adelpha	PCR, abdomen with blood meal	Mexico	Francisco Xavier Clavijero Park	Abella-Medrano et al 2018	 
+181	CXTHE01	 	 	Culex theileri	PCR, head and thorax	Turkey	 	Inci et al 2012	 
+182	CXTRI01	 	 	Culex tritaeniorhynchus	PCR, thorax, unfed	Japan	Sakata wetland	Kim & Tsuda 2012	 
+183	CYAOLI04	 	 	Ochlerotatus taeniorhynchus	PCR, head and thorax	Mexico	Socorro Island	Carlson et al 2011	 
+184	DELURB4	 	 	Culex pipiens	PCR , whole mosquitoes	Austria	 	Schoener et al 2017	 
+185	DELURB4	1	149	Culex pipiens	PCR , whole mosquitoes	France	Sussargues	Zele et al 2014	 
+186	DELURB4	9	543	Culex pipiens	PCR , whole mosquitoes	France	Tour Carbonniere	Zele et al 2014	 
+187	DELURB4	7	299	Culex pipiens	PCR , whole mosquitoes	France	Mejanes	Zele et al 2014	 
+188	DELURB4	4	165	Culex pipiens	PCR , whole mosquitoes	France	Marais du Vigueirat	Zele et al 2014	 
+189	DELURB4	2	 	Culex pipiens	PCR, abdomen with blood meal	Italy	 	Martinez-de la Puente et al 2015	 
+190	DELURB5	4	543	Culex pipiens	PCR , whole mosquitoes	France	Tour Carbonniere	Zele et al 2014	 
+191	DELURB5	3	299	Culex pipiens	PCR , whole mosquitoes	France	Mejanes	Zele et al 2014	 
+192	DELURB5	3	165	Culex pipiens	PCR , whole mosquitoes	France	Marais du Vigueirat	Zele et al 2014	 
+193	DELURB5	 	 	Culex theileri	PCR, head and thorax	Spain	Canada de los Pajaros	Ferraguti et al 2013a	 
+194	DELURB5	 	 	Culex perexiguus	PCR, head and thorax	Spain	Canada de los Pajaros	Ferraguti et al 2013a	 
+195	DENPET03	 	 	Aedes albopictus	PCR, head and thorax	Brazil	 	Guimaraes et al 2021	 
+196	DENPET03	 	 	Culex coronator	PCR, head and thorax	Brazil	 	Guimaraes et al 2021	 
+197	DENPET03	 	 	Ochlerotatus scapularis	PCR, head and thorax	Brazil	 	Guimaraes et al 2021	 
+198	DENPET03	 	 	Ochlerotatus scapularis	PCR, head and thorax	Brazil	 	Guimaraes et al 2021	 
+199	DENPET03	 	 	Ochlerotatus scapularis	PCR, head and thorax	Brazil	 	Guimaraes et al 2021	 
+200	DENPET03	 	 	Ochlerotatus scapularis	PCR, head and thorax	Brazil	 	Guimaraes et al 2021	 
+201	DENPET03	 	 	Mansonia sp.	PCR, head and thorax	Brazil	 	Guimaraes et al 2021	 
+202	DONANA01	 	 	Culex perexiguus	PCR, head and thorax	Spain	Canada de los Pajaros	Ferraguti et al 2013a	 
+203	DONANA02	 	 	Culex modestus	PCR, head and thorax	Spain	Canada de los Pajaros	Ferraguti et al 2013a	 
+204	DONANA03	 	 	Culex pipiens	PCR , whole mosquitoes	Austria	 	Schoener et al 2017	 
+205	DONANA03	 	 	Culex modestus	PCR, head and thorax	Spain	Canada de los Pajaros	Ferraguti et al 2013a	 
+206	DONANA04	 	 	Culex modestus	PCR, head and thorax	Spain	Canada de los Pajaros	Ferraguti et al 2013a	 
+207	DONANA05	1	543	Culex pipiens	PCR , whole mosquitoes	France	Tour Carbonniere	Zele et al 2014	 
+208	DONANA05	 	 	Culex perexiguus	PCR, head and thorax	Spain	Canada de los Pajaros	Ferraguti et al 2013a	 
+209	DONANA08	 	 	Ochlerotatus caspius	PCR, head and thorax	Spain	Canada de los Pajaros	Ferraguti et al 2013a	 
+210	EMCIR01	 	 	Ochlerotatus taeniorhynchus	PCR, thorax, absence of host DNA	Ecuador	 	Bataille et al 2012	 
+211	EUSE1	 	 	Simulium securiforme	PCR, thorax, unfed	Czech Republic	Bohemia Forest, Vltava river valley	Synek et al 2013b	 
+212	EUSE2	1	164	Simulium vernum	PCR, mosquitoes without blood meals	Czech Republic	Fláje Dam	Synek et al 2016	In nests of Aegolius funereus
+213	EUSE2	5	86	Simulium vernum	PCR , whole mosquitoes	Germany	Eastern Westphalia	Chakarov et al 2020	 
+214	EUSE2	 	 	Simulium securiforme	PCR, thorax, unfed	Czech Republic	Bohemia Forest, Vltava river valley	Synek et al 2013b	 
+215	GAGLA03	1	149	Culex pipiens	PCR , whole mosquitoes	France	Sussargues	Zele et al 2014	 
+216	GAGLA03	 	 	Culicoides circumscriptus	PCR, mosquitoes without blood meals	Spain	Donana National Park	Ferraguti et al 2013b	 
+217	GAGLA06	1	86	Simulium vernum	PCR , whole mosquitoes	Germany	Eastern Westphalia	Chakarov et al 2020	 
+218	GALLUS01	 	 	Culex pipiens	PCR, thorax, absence of host DNA	Japan	Rinshi-no-mori Park	Kim & Tsuda 2010	 
+219	GALLUS01	 	 	Culex pipiens	PCR, thorax, unfed	Japan	Sakata wetland	Kim & Tsuda 2012	 
+220	GALLUS01	 	 	Culex pipiens	PCR , whole mosquitoes	Japan	Nihon University farm	Shirotani et al 2009	1 positive pool/276 pools tested (811 mosquitoes
+221	GALLUS01	 	 	Culex quinquefasciatus	PCR , whole mosquitoes	Japan	 	Ejiri et al 2008	 
+222	GALLUS01	 	 	Armigeres subalbatus	PCR, thorax, unfed	Japan	Sakata wetland	Kim & Tsuda 2012	 
+223	GALLUS01	 	 	Aedes esoensis	PCR, thorax, unfed	Japan	Kushiro Zoo	Ejiri et al 2011c	 
+224	GALLUS01	 	 	Culex inatomii	PCR, thorax, unfed	Japan	Sakata wetland	Kim & Tsuda 2012	 
+225	GALLUS01	 	 	Culex sp.	PCR , whole mosquitoes	Brazil	Mata Seca State Park	Ferreira et al 2016	1 pool postive / 43 pools tested (314 mosquitoes)
+226	GALLUS02	 	 	Culex pipiens	PCR, thorax, unfed	Japan	Sakata wetland	Kim & Tsuda 2012	 
+227	GALLUS02	 	 	Culex tritaeniorhynchus	PCR, abdomen, blood filled	Japan	Marinepia Aquarium	Inumaru et al 2021a	 
+228	GALLUS02	 	 	Culex tritaeniorhynchus	PCR, abdomen, blood filled	Japan	Marinepia	Inumaru et al 2021a	bloodfed
+229	GALLUS17	3	 	Simulium chumpornense	PCR, abdomen, blood filled	Thailand	 	Pramual et al 2020	Blood meal determined as from Gallus gallus
+230	GALLUS34	1	 	Simulium chumpornense	PCR, abdomen, blood filled	Thailand	 	Pramual et al 2020	Blood meal determined as from Gallus gallus
+231	GALLUS35	2	 	Simulium chumpornense	PCR, abdomen, blood filled	Thailand	 	Pramual et al 2020	Blood meal determined as from Gallus gallus
+232	GALLUS37	2	 	Simulium chumpornense	PCR, abdomen, blood filled	Thailand	 	Pramual et al 2020	Blood meal determined as from Gallus gallus
+233	GALLUS42	1	 	Simulium chumpornense	PCR, abdomen, blood filled	Thailand	 	Pramual et al 2020	Blood meal determined as from Gallus gallus
+234	GALLUS43	1	 	Simulium chumpornense	PCR, abdomen, blood filled	Thailand	 	Pramual et al 2020	Blood meal determined as from Gallus gallus
+235	GALLUS44	1	 	Simulium asakoae	PCR, abdomen, blood filled	Thailand	 	Pramual et al 2020	Blood meal determined as from Gallus gallus
+236	GALLUS45	1	 	Simulium chumpornense	PCR, abdomen, blood filled	Thailand	 	Pramual et al 2020	Blood meal determined as from Gallus gallus
+237	GALLUS46	1	 	Simulium chumpornense	PCR, abdomen, blood filled	Thailand	 	Pramual et al 2020	Blood meal determined as from Gallus gallus
+238	GIMIS01	1	39	Gigantodax misitu	PCR, salivary gland and mid gut	Colombia	Chingaza PNN	Lotta et al 2016	 
+239	GRW04	3	533	Culex pipiens	PCR, oocysts and sporozoites	Japan	Rinshi-no-mori Park	Kim & Tsuda 2015	 
+240	GRW04	 	 	Culex pipiens	PCR, thorax, unfed	Japan	Sakata wetland	Kim & Tsuda 2012	 
+241	GRW04	 	 	Culex pipiens	PCR, abdomen	Japan	Nihon University farm	Odagawa et al unpubl	 
+242	GRW04	1	164	Culex pipiens	PCR, head and thorax	Madagascar	Maromizaha	Schmid et al 2017a	 
+243	GRW04	 	 	Culex quinquefasciatus	PCR , whole mosquitoes	Japan	 	Ejiri et al 2008	 
+244	GRW04	1	96	Uranotaenia sp.	PCR, head and thorax	Madagascar	Maromizaha	Schmid et al 2017a	 
+245	GRW06	 	 	Culex pipiens	PCR , whole mosquitoes	Austria	 	Schoener et al 2017	 
+246	GRW06	2	543	Culex pipiens	PCR , whole mosquitoes	France	Tour Carbonniere	Zele et al 2014	 
+247	GRW06	1	165	Culex pipiens	PCR , whole mosquitoes	France	Marais du Vigueirat	Zele et al 2014	 
+248	GRW06	 	 	Coquillettidia aurites	PCR, thorax, absence of host DNA	Cameroon	 	Njabo et al 2011	 
+249	GRW06	 	 	Culex annulioris	PCR, thorax, absence of host DNA	Cameroon	 	Njabo et al 2011	 
+250	GRW09	 	 	Coquillettidia aurites	PCR, head and thorax	Cameroon	 	Njabo et al 2009	 
+251	GRW09	 	 	Coquillettidia metallica	PCR, head and thorax	Cameroon	 	Njabo et al 2009	 
+252	GRW09	 	 	Coquillettidia pseudoconopas	PCR, head and thorax	Cameroon	 	Njabo et al 2009	 
+253	GRW09	 	 	Culex neavei	PCR, thorax, absence of host DNA	Cameroon	 	Njabo et al 2011	 
+254	GRW09	 	 	Culex guiarti	PCR, thorax, absence of host DNA	Cameroon	 	Njabo et al 2011	 
+255	GRW09	1	2	Anopheles mascarensis	PCR, head and thorax	Madagascar	Maromizaha	Schmid et al 2017a	 
+256	GRW11	1	543	Culex pipiens	PCR , whole mosquitoes	France	Tour Carbonniere	Zele et al 2014	 
+257	GRW11	1	 	Culex pipiens	PCR, abdomen with blood meal	Italy	 	Martinez-de la Puente et al 2015	 
+258	GRW11	 	 	Culex pipiens	PCR, abdomen with blood meal	Japan	 	Kim et al 2009b	 
+259	GRW11	 	 	Culex pipiens	PCR, thorax, absence of host DNA	Japan	Rinshi-no-mori Park	Kim & Tsuda 2010	 
+260	GRW11	1	533	Culex pipiens	PCR, oocysts and sporozoites	Japan	Rinshi-no-mori Park	Kim & Tsuda 2015	 
+261	GRW11	 	 	Culex pipiens	Experimental infection	Lithuania	 	Kazlauskiene et al 2013	 
+262	GRW11	 	 	Culex pipiens	PCR, thorax, unfed	Switzerland	 	Glaizot et al 2012	 
+263	GRW11	 	 	Culex pipiens	PCR, head and thorax	Switzerland	Dorigny, Lausanne	Lalubin et al 2013	 
+264	GRW11	 	 	Culex quinquefasciatus	PCR , whole mosquitoes	Japan	 	Ejiri et al 2008	 
+265	HAWF2	 	 	Culicoides circumscriptus	PCR , whole mosquitoes	Bulgaria	Kalimok	Bobeva et al 2013	 
+266	HAWF6	2	96	Uranotaenia sp.	PCR, head and thorax	Madagascar	Maromizaha	Schmid et al 2017a	 
+267	HEVER01	1	39	Gigantodax misitu	PCR, salivary gland and mid gut	Colombia	Chingaza PNN	Lotta et al 2016	 
+268	LAMUT01	 	 	Simulium uchidai	PCR, salivary gland and mid gut	Japan	 	Sato et al 2009	 
+269	LAMUT01	 	 	Simulium japonicum	PCR, salivary gland and mid gut	Japan	 	Sato et al 2009	 
+270	LAMUT01	 	 	Prosimulium hirtipes	PCR, salivary gland and mid gut	Japan	 	Sato et al 2009	 
+271	LINN1	 	 	Culex pipiens	PCR , whole mosquitoes	Austria	 	Schoener et al 2017	 
+272	LINN1	1	543	Culex pipiens	PCR , whole mosquitoes	France	Tour Carbonniere	Zele et al 2014	 
+273	LINN1	0	 	Culex pipiens	PCR, abdomen with blood meal	Italy	 	Martinez-de la Puente et al 2015	 
+274	LINN1	 	 	Culex pipiens	PCR, head and thorax	Spain	Canada de los Pajaros	Ferraguti et al 2013a	 
+275	LINN1	 	 	Culex pipiens	PCR, mosquitoes without blood meals	United States	 	Kimura et al 2010	 
+276	LINN1	 	 	Culex restuans	PCR, mosquitoes without blood meals	United States	 	Kimura et al 2010	 
+277	LINN1	 	 	Ochlerotatus caspius	PCR, head and thorax	Spain	Canada de los Pajaros	Ferraguti et al 2013a	 
+278	LINN1	 	 	Culex modestus	PCR, head and thorax	Spain	Canada de los Pajaros	Ferraguti et al 2013a	 
+279	LINN1	1	 	Culex hortensis	PCR, abdomen with blood meal	Italy	 	Martinez-de la Puente et al 2015	 
+280	LINN1	 	 	Culex perexiguus	PCR, head and thorax	Spain	Canada de los Pajaros	Ferraguti et al 2013a	 
+281	LTVOR01	 	 	Lutzia vorax	PCR , whole mosquitoes	Japan	 	Ejiri et al 2009	 
+282	LZFUS01	 	 	Aedes albopictus	PCR , whole mosquitoes	Japan	 	Ejiri et al 2008	 
+283	LZFUS01	 	 	Lutzia fuscanus	PCR , whole mosquitoes	Japan	 	Ejiri et al 2008	 
+284	MANSON01	 	 	Mansonia sp. 1 BR-2012	PCR , whole mosquitoes	Japan	 	Ejiri et al 2008	 
+285	MANSON02	 	 	Mansonia uniformis	PCR, thorax, absence of host DNA	Cameroon	 	Njabo et al 2011	 
+286	MATIT01	 	 	Mansonia titillans	PCR , whole mosquitoes	Brazil	Mata Seca State Park	Ferreira et al 2016	1 pool postive / 459 pools tested (4336 mosquitoes)
+287	MICRO01	 	 	Microlynchia galapagoensis	PCR, thorax, absence of host DNA	Ecuador	 	Valkiunas et al 2010b	 
+288	MICRO02	 	 	Microlynchia galapagoensis	PCR, thorax, absence of host DNA	Ecuador	 	Valkiunas et al 2010b	 
+289	MILANS04	2	35	Simulium angustipes	PCR , whole mosquitoes	Germany	Eastern Westphalia	Chakarov et al 2020	 
+290	MILANS05	 	 	Culex neavei	PCR, thorax, absence of host DNA	Cameroon	 	Njabo et al 2011	 
+291	MTUR2	1	86	Simulium vernum	PCR , whole mosquitoes	Germany	Eastern Westphalia	Chakarov et al 2020	 
+292	MYISWA01	 	 	Mansonia sp.	PCR, head and thorax	Brazil	 	Guimaraes et al 2021	 
+293	NEVE01	3	164	Simulium vernum	PCR, mosquitoes without blood meals	Czech Republic	Fláje Dam	Synek et al 2016	In nests of Aegolius funereus
+294	NEVE01	4	86	Simulium vernum	PCR , whole mosquitoes	Germany	Eastern Westphalia	Chakarov et al 2020	 
+295	NYCNYC01	 	 	Mansonia titillans	PCR , whole mosquitoes	Brazil	Mata Seca State Park	Ferreira et al 2016	1 pool postive / 459 pools tested (4336 mosquitoes)
+296	PADOM01	1	149	Culex pipiens	PCR , whole mosquitoes	France	Sussargues	Zele et al 2014	 
+297	PADOM01	2	543	Culex pipiens	PCR , whole mosquitoes	France	Tour Carbonniere	Zele et al 2014	 
+298	PADOM01	4	299	Culex pipiens	PCR , whole mosquitoes	France	Mejanes	Zele et al 2014	 
+299	PADOM01	 	 	Culex pipiens	PCR, head and thorax	Switzerland	Dorigny, Lausanne	Lalubin et al 2013	 
+300	PADOM02	 	 	Aedes albopictus	PCR, abdomen, blood filled	Japan	Tsushima Wildlife Conservation Center	Tanigawa et al 2013	1 positive/ 93 collected (pool number unknown)
+301	PADOM02	 	 	Aedes albopictus	PCR, abdomen	Japan	Nihon University farm	Odagawa et al unpubl	 
+302	PADOM02	 	 	Culex pipiens	PCR , whole mosquitoes	Japan	 	Ejiri et al 2009	 
+303	PADOM02	 	 	Culex pipiens	PCR, abdomen with blood meal	Japan	 	Kim et al 2009b	 
+304	PADOM02	 	 	Culex pipiens	PCR, mosquitoes without blood meals	Japan	 	Kim et al 2009b	 
+305	PADOM02	 	 	Culex pipiens	PCR, thorax, absence of host DNA	Japan	Rinshi-no-mori Park	Kim & Tsuda 2010	 
+306	PADOM02	 	 	Culex pipiens	PCR, thorax, unfed	Japan	Ueno Zoological Gardens Tokyo	Ejiri et al 2011a	 
+307	PADOM02	 	 	Culex pipiens	PCR, thorax, unfed	Japan	Sakata wetland	Kim & Tsuda 2012	 
+308	PADOM02	 	 	Culex pipiens	PCR , whole mosquitoes	Japan	Nihon University farm	Shirotani et al 2009	1 positive pool/276 pools tested (811 mosquitoes
+309	PADOM02	 	 	Culex pipiens	PCR, head-thorax/abdomen	Japan	Nihon University farm	Odagawa et al unpubl	 
+310	PADOM02	 	 	Culex pipiens	PCR, abdomen, blood filled	Japan	Marinepia Aquarium	Inumaru et al 2021a	 
+311	PADOM02	 	 	Culex pipiens	PCR, abdomen, blood filled	Japan	Marinepia	Inumaru et al 2021a	bloodfed
+312	PADOM02	 	 	Culex pipiens	PCR, thorax, unfed	Switzerland	 	Glaizot et al 2012	 
+313	PADOM02	 	 	Culex pipiens	PCR, head and thorax	Switzerland	Dorigny, Lausanne	Lalubin et al 2013	 
+314	PADOM02	 	 	Tripteroides bambusa	PCR, abdomen	Japan	Nihon University farm	Odagawa et al unpubl	 
+315	PADOM02	 	 	Culex bitaeniorhynchus	PCR, thorax, unfed	Japan	Sakata wetland	Kim & Tsuda 2012	 
+316	PADOM02	 	 	Culex inatomii	PCR, thorax, unfed	Japan	Sakata wetland	Kim & Tsuda 2012	 
+317	PADOM02	 	 	Lutzia vorax	PCR , whole mosquitoes	Japan	 	Ejiri et al 2009	 
+318	PADOM03	2	 	Culex pipiens	PCR, abdomen with blood meal	Italy	 	Martinez-de la Puente et al 2015	 
+319	PADOM05	 	 	Culex pipiens	PCR, head and thorax	Turkey	 	Inci et al 2012	 
+320	PADOM05	 	 	Culex modestus	PCR, head and thorax	Spain	Canada de los Pajaros	Ferraguti et al 2013a	 
+321	PADOM05	 	 	Culex perexiguus	PCR, head and thorax	Spain	Canada de los Pajaros	Ferraguti et al 2013a	 
+322	PADOM11	 	 	Culex restuans	PCR, mosquitoes without blood meals	United States	 	Kimura et al 2010	 
+323	PAHIS1	 	 	Aedes vexans	PCR, head and thorax	Turkey	 	Inci et al 2012	 
+324	PARUS1	 	 	Culicoides impunctatus	Experimental infection	Russia	Curonian Spit	Ziegyte et al 2017	Completed development, indoor experiment
+325	PARUS18	1	18	Simulium rubzovianum	PCR , whole mosquitoes	Germany	Eastern Westphalia	Chakarov et al 2020	 
+326	PARUS20	1	1	Simulium petricolum	PCR , whole mosquitoes	Germany	Eastern Westphalia	Chakarov et al 2020	 
+327	PARUS25	1	164	Simulium vernum	PCR, mosquitoes without blood meals	Czech Republic	Fláje Dam	Synek et al 2016	In nests of Aegolius funereus
+328	PARUS4	1	164	Simulium vernum	PCR, mosquitoes without blood meals	Czech Republic	Fláje Dam	Synek et al 2016	In nests of Aegolius funereus
+329	PFC1	 	 	Culicoides impunctatus	Experimental infection	Russia	Curonian Spit	Ziegyte et al 2017	Completed development, indoor experiment
+330	PSDIS01	 	 	Psorophora discrucians	PCR , whole mosquitoes	Brazil	Mata Seca State Park	Ferreira et al 2016	1 pool postive / 173 pools tested (1435 mosquitoes)
+331	RBQ03	 	 	Ochlerotatus caspius	PCR, head and thorax	Spain	Canada de los Pajaros	Ferraguti et al 2013a	 
+332	ROFI1	 	 	Culicoides segnis	PCR, thorax, unfed	Czech Republic	Bohemia Forest, Vltava river valley	Synek et al 2013b	 
+333	SANG01	1	35	Simulium angustipes	PCR , whole mosquitoes	Germany	Eastern Westphalia	Chakarov et al 2020	 
+334	SANG02	3	86	Simulium vernum	PCR , whole mosquitoes	Germany	Eastern Westphalia	Chakarov et al 2020	 
+335	SANG02	1	35	Simulium angustipes	PCR , whole mosquitoes	Germany	Eastern Westphalia	Chakarov et al 2020	 
+336	SEIAUR01	 	 	Culex pipiens	PCR, mosquitoes without blood meals	United States	 	Kimura et al 2010	 
+337	SEIAUR01	 	 	Culex restuans	PCR, mosquitoes without blood meals	United States	 	Kimura et al 2010	 
+338	SEIAUR01	 	 	Aedes canadensis	PCR, mosquitoes without blood meals	United States	 	Kimura et al 2010	 
+339	SFC9	 	 	Culicoides impunctatus	Experimental infection	Russia	Curonian Spit	Ziegyte et al 2017	Completed development, indoor experiment
+340	SGS1	 	 	Aedes albopictus	PCR, abdomen	Japan	Nihon University farm	Odagawa et al unpubl	 
+341	SGS1	 	 	Culex pipiens	PCR , whole mosquitoes	Austria	 	Schoener et al 2017	 
+342	SGS1	 	 	Culex pipiens	PCR , whole mosquitoes	Austria	 	Schoener et al 2017	 
+343	SGS1	8	149	Culex pipiens	PCR , whole mosquitoes	France	Sussargues	Zele et al 2014	 
+344	SGS1	22	543	Culex pipiens	PCR , whole mosquitoes	France	Tour Carbonniere	Zele et al 2014	 
+345	SGS1	5	299	Culex pipiens	PCR , whole mosquitoes	France	Mejanes	Zele et al 2014	 
+346	SGS1	9	165	Culex pipiens	PCR , whole mosquitoes	France	Marais du Vigueirat	Zele et al 2014	 
+347	SGS1	9	 	Culex pipiens	PCR, abdomen with blood meal	Italy	 	Martinez-de la Puente et al 2015	 
+348	SGS1	 	 	Culex pipiens	PCR, mosquitoes without blood meals	Japan	 	Kim et al 2009b	 
+349	SGS1	 	 	Culex pipiens	PCR, thorax, absence of host DNA	Japan	Rinshi-no-mori Park	Kim & Tsuda 2010	 
+350	SGS1	5	533	Culex pipiens	PCR, oocysts and sporozoites	Japan	Rinshi-no-mori Park	Kim & Tsuda 2015	 
+351	SGS1	 	 	Culex pipiens	PCR, thorax, unfed	Japan	Ueno Zoological Gardens Tokyo	Ejiri et al 2011a	 
+352	SGS1	 	 	Culex pipiens	PCR, head-thorax/abdomen	Japan	Nihon University farm	Odagawa et al unpubl	 
+353	SGS1	 	 	Culex pipiens	Experimental infection	Lithuania	 	Kazlauskiene et al 2013	 
+354	SGS1	 	 	Culex pipiens	PCR, mosquitoes without blood meals	Portugal	Santo André	Ventim et al 2012c	 
+355	SGS1	 	 	Culex pipiens	PCR, head and thorax	Spain	Canada de los Pajaros	Ferraguti et al 2013a	 
+356	SGS1	 	 	Culex pipiens	PCR, thorax, unfed	Switzerland	 	Glaizot et al 2012	 
+357	SGS1	 	 	Culex pipiens	PCR, head and thorax	Switzerland	Dorigny, Lausanne	Lalubin et al 2013	 
+358	SGS1	 	 	Culex pipiens	PCR, head and thorax	Turkey	 	Inci et al 2012	 
+359	SGS1	 	 	Culiseta annulata	PCR, head and thorax	Turkey	 	Inci et al 2012	 
+360	SGS1	 	 	Culex modestus	PCR, head and thorax	Spain	Canada de los Pajaros	Ferraguti et al 2013a	 
+361	SGS1	 	 	Culex theileri	PCR, head and thorax	Spain	Canada de los Pajaros	Ferraguti et al 2013a	 
+362	SGS1	 	 	Culex sasai	PCR, abdomen with blood meal	Japan	 	Kim et al 2009a	 
+363	SGS1	 	 	Lutzia vorax	PCR , whole mosquitoes	Japan	 	Ejiri et al 2009	 
+364	SGS1	 	 	Culex perexiguus	PCR, head and thorax	Spain	Canada de los Pajaros	Ferraguti et al 2013a	 
+365	SIBIC01	1	266	Simulium bicolotatum	PCR, salivary gland and mid gut	Colombia	Chingaza PNN	Lotta et al 2016	 
+366	SIMUI01	1	190	Simulium muiscorum	PCR, salivary gland and mid gut	Colombia	Chingaza PNN	Lotta et al 2016	 
+367	SIMUL01	 	 	Simulium lineatum	PCR , whole mosquitoes	Turkey	 	Inci et al	 
+368	SISKIN1	 	 	Culicoides nubeculosus	Experimental infection	Lithuania	Vilnius	Ziegyte et al 2016	Completed development, indoor experiment
+369	SPHUM05	 	 	Culex pipiens	PCR, thorax, blood filled	Japan	Marinepia Aquarium	Inumaru et al 2021a	 
+370	SPHUM05	 	 	Culex pipiens	PCR, thorax, blood filled	Japan	Marinepia	Inumaru et al 2021a	bloodfed; from head-thorax only
+371	SPMAG10	 	 	Culex pipiens	PCR, abdomen	Japan	Nihon University farm	Odagawa et al unpubl	 
+372	SPMEN03	 	 	Ochlerotatus taeniorhynchus	PCR, head and thorax	Mexico	Socorro Island	Carlson et al 2011	 
+373	STAL1	1	18	Simulium rubzovianum	PCR , whole mosquitoes	Germany	Eastern Westphalia	Chakarov et al 2020	 
+374	STOCC13	1	 	Simulium exulatum	PCR , whole mosquitoes	United States	Gothic	Murdock et al 2015	Number found = positive pools of 5 blackflies
+375	STUR1	2	86	Simulium vernum	PCR , whole mosquitoes	Germany	Eastern Westphalia	Chakarov et al 2020	 
+376	STUR1	 	 	Simulium securiforme	PCR, thorax, unfed	Czech Republic	Bohemia Forest, Vltava river valley	Synek et al 2013b	 
+377	STUR1	2	18	Simulium rubzovianum	PCR , whole mosquitoes	Germany	Eastern Westphalia	Chakarov et al 2020	 
+378	SW2	 	 	Culex pipiens	PCR, thorax, unfed	Switzerland	 	Glaizot et al 2012	 
+379	SYAT01	 	 	Culicoides kibunensis	PCR, thorax, unfed	Germany	Mooswald Forest	Santiago-Alarcon et al 2013	 
+380	SYAT05	1	 	Aedes albopictus	PCR, abdomen with blood meal	Italy	 	Martinez-de la Puente et al 2015	 
+381	SYAT05	 	 	Culex pipiens	PCR , whole mosquitoes	Austria	 	Schoener et al 2017	 
+382	SYAT05	 	 	Culex pipiens	PCR, thorax, unfed	Czech Republic	Bohemia Forest, Vltava river valley	Synek et al 2013b	 
+383	SYAT05	2	543	Culex pipiens	PCR , whole mosquitoes	France	Tour Carbonniere	Zele et al 2014	 
+384	SYAT05	1	299	Culex pipiens	PCR , whole mosquitoes	France	Mejanes	Zele et al 2014	 
+385	SYAT05	46	 	Culex pipiens	PCR, abdomen with blood meal	Italy	 	Martinez-de la Puente et al 2015	 
+386	SYAT05	 	 	Culex pipiens	PCR, thorax, absence of host DNA	Japan	Rinshi-no-mori Park	Kim & Tsuda 2010	 
+387	SYAT05	 	 	Culex pipiens	PCR, thorax, unfed	Switzerland	 	Glaizot et al 2012	 
+388	SYAT05	 	 	Culex pipiens	PCR, head and thorax	Switzerland	Dorigny, Lausanne	Lalubin et al 2013	 
+389	SYAT05	 	 	Culex pipiens	PCR, head and thorax	Turkey	 	Inci et al 2012	 
+390	SYAT05	 	 	Culex pipiens	PCR, mosquitoes without blood meals	United States	 	Kimura et al 2010	 
+391	SYAT05	 	 	Culex restuans	PCR, mosquitoes without blood meals	United States	 	Kimura et al 2010	 
+392	SYAT05	 	 	Culex modestus	PCR, head and thorax	Spain	Canada de los Pajaros	Ferraguti et al 2013a	 
+393	SYAT05	 	 	Culex theileri	PCR, mosquitoes without blood meals	Portugal	Taipal	Ventim et al 2012c	 
+394	SYAT05	 	 	Culex theileri	PCR, head and thorax	Spain	Canada de los Pajaros	Ferraguti et al 2013a	 
+395	SYAT05	 	 	Culex perexiguus	PCR, head and thorax	Spain	Canada de los Pajaros	Ferraguti et al 2013a	 
+396	SYBOR01	 	 	Culex theileri	PCR, head and thorax	Spain	Canada de los Pajaros	Ferraguti et al 2013a	 
+397	SYBOR01	 	 	Culex perexiguus	PCR, head and thorax	Spain	Canada de los Pajaros	Ferraguti et al 2013a	 
+398	SYBOR02	 	 	Culex inatomii	PCR, thorax, unfed	Japan	Sakata wetland	Kim & Tsuda 2012	 
+399	SYCON02	 	 	Culex pipiens	PCR, head and thorax	Japan	Nihon University farm	Odagawa et al unpubl	 
+400	TABI09	1	 	Simulium silvestre	PCR , whole mosquitoes	United States	Gothic	Murdock et al 2015	Number found = positive pools of 5 blackflies
+401	TUMIG03	 	 	Culex pipiens	PCR, mosquitoes without blood meals	United States	 	Kimura et al 2010	 
+402	TUMIG03	 	 	Culex restuans	PCR, mosquitoes without blood meals	United States	 	Kimura et al 2010	 
+403	TUMIG03	 	 	Mansonia pseudotitillans	PCR , whole mosquitoes	Brazil	Mata Seca State Park	Ferreira et al 2016	1 pool postive / 29 pools tested (224 mosquitoes)
+404	TUPHI01	 	 	Culicoides kibunensis	PCR, thorax, unfed	Czech Republic	Bohemia Forest, Vltava river valley	Synek et al 2013b	 
+405	TUPHI01	 	 	Culicoides kibunensis	PCR, thorax, unfed	Germany	Mooswald Forest	Santiago-Alarcon et al 2013	 
+406	TUPHI01	 	 	Culicoides pictipennis	PCR, thorax, unfed	Germany	Mooswald Forest	Santiago-Alarcon et al 2013	 
+407	TUPHI01	 	 	Culicoides segnis	PCR, thorax, unfed	Czech Republic	Bohemia Forest, Vltava river valley	Synek et al 2013b	 
+408	TUPHI01	2	36	Culicoides sp.	PCR, mosquitoes without blood meals	Czech Republic	Fláje Dam	Synek et al 2016	In nests of Aegolius funereus
+409	TUPHI05	 	 	Culex pipiens	PCR , whole mosquitoes	Austria	 	Schoener et al 2017	 
+410	TURDUS1	 	 	Culex pipiens	PCR, thorax, unfed	Switzerland	 	Glaizot et al 2012	 
+411	TURDUS2	 	 	Culex pipiens	PCR, thorax, unfed	Czech Republic	Bohemia Forest, Vltava river valley	Synek et al 2013b	 
+412	TURDUS2	4	 	Culex pipiens	PCR, abdomen with blood meal	Italy	 	Martinez-de la Puente et al 2015	 
+413	TURDUS2	 	 	Culicoides festivipennis	PCR, thorax, unfed	Czech Republic	Bohemia Forest, Vltava river valley	Synek et al 2013b	 
+414	TURDUS2	 	 	Culicoides kibunensis	PCR, thorax, unfed	Czech Republic	Bohemia Forest, Vltava river valley	Synek et al 2013b	 
+415	TURDUS2	 	 	Culicoides pictipennis	PCR , whole mosquitoes	Bulgaria	Kalimok	Bobeva et al 2013	 
+416	URANO01	1	45	Uranotaenia alboabdominalis	PCR, head and thorax	Madagascar	Maromizaha	Schmid et al 2017a	 
+417	URANO02	1	96	Uranotaenia sp.	PCR, head and thorax	Madagascar	Maromizaha	Schmid et al 2017a	 
+418	URANO03	1	45	Uranotaenia alboabdominalis	PCR, head and thorax	Madagascar	Maromizaha	Schmid et al 2017a	 
+419	URANO04	1	96	Uranotaenia sp.	PCR, head and thorax	Madagascar	Maromizaha	Schmid et al 2017a	 
+420	VIGIL02	2	 	Simulium silvestre	PCR , whole mosquitoes	United States	Gothic	Murdock et al 2015	Number found = positive pools of 5 blackflies
+421	VIOLI03	 	 	Culex nigripalpus	PCR, head and thorax	Brazil	 	Guimaraes et al 2021	 
+422	WW1	3	164	Culex pipiens	PCR, head and thorax	Madagascar	Maromizaha	Schmid et al 2017a	 
+423	WW1	1	5	Culex annulioris	PCR, head and thorax	Madagascar	Maromizaha	Schmid et al 2017a	 
+424	YWT1	 	 	Culicoides impunctatus	Experimental infection	Russia	Curonian Spit	Ziegyte et al 2017	Completed development, indoor experiment
+425	ZEGAL05	 	 	Microlynchia galapagoensis	PCR, thorax, absence of host DNA	Ecuador	 	Valkiunas et al 2010b	 
+426	ZOCAP03	 	 	Culex pipiens	PCR, abdomen	Japan	Nihon University farm	Odagawa et al unpubl	 
+427	ZOLEU02	1	 	Simulium silvestre	PCR , whole mosquitoes	United States	Gothic	Murdock et al 2015	Number found = positive pools of 5 blackflies
