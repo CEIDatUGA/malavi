@@ -22,8 +22,11 @@ vec_eao <- vec %>% filter(country == c("Austria", "Bulgaria", "Cameroon", "Czech
 
 # Summary of data availability
 
+Coordinates are in decimal minutes format and I should convert that to decimal degrees to get lon lat
+
 ```{r}
-host_eao 
+eao_sf <- st_as_sf(host_eao$coordinates)
+eao_sf <- 
 ```
 
 
