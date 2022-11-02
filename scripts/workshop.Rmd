@@ -9,24 +9,59 @@ library(tidyverse)
 library(magrittr)
 library(here)
 library(sf)
+library(measurements)
+library(tmap)
 ```
 
 
 ```{r, message = F}
 host <- read_tsv(here("data/MalAvi_9131431.tsv"))
 vec <- read_tsv(here("data/MalAvi_8718204.tsv"))
+```
 
-host_eao <- host %>% filter(continent == c("Europe", "Africa", "Unknown"))
-vec_eao <- vec %>% filter(country == c("Austria", "Bulgaria", "Cameroon", "Czech Republic", "France", "Germany", "Italy", "Lithuania", "Madagascar", "Portugal", "Russia", "Spain", "Switzerland", "Turkey"))
+
+```{r}
+host_sf <- host %>% mutate(lat = gsub("\\,.*", " ", host$coordinates),
+                           lon = gsub(".*,","",host$coordinates))
+
+host_sf %<>% drop_na(coordinates)
+
+host_sf %<>% mutate(lat = gsub(" ", "", host_sf$lat),
+                    lon = gsub(" ", "", host_sf$lon))
+
+host_sf %<>% mutate(lat = gsub("°", " ", host_sf$lat),
+                    lon = gsub("°", " ", host_sf$lon))
+
+host_sf %<>% mutate(lat = gsub("'", "", host_sf$lat),
+                    lon = gsub("'", "", host_sf$lon))
+
+host_sf %<>% mutate(lat = gsub("`", "", host_sf$lat),
+                    lon = gsub("`", "", host_sf$lon))
+
+host_sf %<>% mutate(lat = gsub("´", "", host_sf$lat),
+                    lon = gsub("´", "", host_sf$lon))
+
+
+host_sf %<>% mutate(lat = measurements::conv_unit(host_sf$lat, from = 'deg_dec_min', to = 'dec_deg'),
+                    lon = measurements::conv_unit(host_sf$lon, from = 'deg_dec_min', to = 'dec_deg'))
+
+host_sf %<>% drop_na(lat)
+host_sf %<>% drop_na(lon)
+
+host_sf <- st_as_sf(host_sf, coords = c("lon", "lat"), remove = F)
+```
+
+
+```{r, message = F}
+host_eao <- host_sf %>% filter(continent == c("Europe", "Africa", "Unknown"))
+#vec_eao <- vec %>% filter(country == c("Austria", "Bulgaria", "Cameroon", "Czech Republic", "France", "Germany", "Italy", "Lithuania", "Madagascar", "Portugal", "Russia", "Spain", "Switzerland", "Turkey"))
 ```
 
 # Summary of data availability
 
-Coordinates are in decimal minutes format and I should convert that to decimal degrees to get lon lat
-
 ```{r}
-eao_sf <- st_as_sf(host_eao$coordinates)
-eao_sf <- 
+plot(host_eao)
+tm_shape(host_eao) + tm_dots()
 ```
 
 
