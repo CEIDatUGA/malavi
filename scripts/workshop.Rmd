@@ -85,6 +85,13 @@ border_eao <- rbind(border_eur, border_afr)
 
 ```{r}
 tm_shape(world) + tm_borders()
-tm_shape(world) + tm_borders() + tm_shape(host_eao) + tm_dots()
+tm_shape(border_eao) + tm_borders()
+tm_shape(host_eao) + tm_dots()
+```
+
+
+```{r}
+plot(st_geometry(border_eao))
+plot(st_geometry(host_eao), add = T)
 ```
 
