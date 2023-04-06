@@ -24,8 +24,10 @@ vec <- read_tsv(here("data/MalAvi_8718204.tsv"))
 ```{r}
 world <- read_sf(system.file("shapes/world.gpkg", package = "spData"))
 world_crs <- st_crs(world)
+```
 
 
+```{r}
 host_sf <- host %>% mutate(lat = gsub("\\,.*", " ", host$coordinates),
                            lon = gsub(".*,","",host$coordinates))
 
@@ -61,6 +63,11 @@ host_sf <- st_as_sf(host_sf, coords = c("lat", "lon"), crs = world_crs, remove =
 ```{r, message = F}
 host_eur <- host_sf %>% filter(continent == c("Europe"))
 host_afr <- host_sf %>% filter(continent == c("Africa"))
+host_asia <- host_sf %>% filter(continent == c("Asia"))
+host_noa <- host_sf %>% filter(continent == c("North America"))
+host_oce <- host_sf %>% filter(continent == c("Oceania"))
+host_soa <- host_sf %>% filter(continent == c("South America"))
+
 host_eao <- rbind(host_eur, host_afr)
 #vec_eao <- vec %>% filter(country == c("Austria", "Bulgaria", "Cameroon", "Czech Republic", "France", "Germany", "Italy", "Lithuania", "Madagascar", "Portugal", "Russia", "Spain", "Switzerland", "Turkey"))
 ```
@@ -79,13 +86,20 @@ tm_shape(host_eao) + tm_dots()
 ```{r}
 border_eur <- world %>% filter(continent == c("Europe"))
 border_afr <- world %>% filter(continent == c("Africa"))
+
 border_eao <- rbind(border_eur, border_afr)
 ```
 
 ```{r}
 tm_shape(world) + tm_borders()
 tm_shape(world) + tm_polygons()
-tm_shape(host_sf) + tm_dots()
+tm_shape(host_afr) + tm_dots()
+tm_shape(host_asia) + tm_dots()
+tm_shape(host_eur) + tm_dots()
+tm_shape(host_noa) + tm_dots()
+tm_shape(host_oce) + tm_dots()
+tm_shape(host_soa) + tm_dots()
+
 ```
 
 
