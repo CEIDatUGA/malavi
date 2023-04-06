@@ -24,6 +24,7 @@ vec <- read_tsv(here("data/MalAvi_8718204.tsv"))
 ```{r}
 world <- read_sf(system.file("shapes/world.gpkg", package = "spData"))
 world_crs <- st_crs(world)
+world_bbox <- st_bbox(world)
 ```
 
 
@@ -56,7 +57,6 @@ host_sf %<>% drop_na(lat)
 host_sf %<>% drop_na(lon)
 
 host_sf <- st_as_sf(host_sf, coords = c("lat", "lon"), crs = world_crs, remove = F)
-
 ```
 
 
@@ -67,6 +67,7 @@ host_asia <- host_sf %>% filter(continent == c("Asia"))
 host_noa <- host_sf %>% filter(continent == c("North America"))
 host_oce <- host_sf %>% filter(continent == c("Oceania"))
 host_soa <- host_sf %>% filter(continent == c("South America"))
+host_usa <- host_sf %>% filter(country == c("United States"))
 
 host_eao <- rbind(host_eur, host_afr)
 #vec_eao <- vec %>% filter(country == c("Austria", "Bulgaria", "Cameroon", "Czech Republic", "France", "Germany", "Italy", "Lithuania", "Madagascar", "Portugal", "Russia", "Spain", "Switzerland", "Turkey"))
@@ -76,7 +77,7 @@ host_eao <- rbind(host_eur, host_afr)
 
 ```{r}
 plot(host_eao)
-tm_shape(host_eao) + tm_dots()
+tm_shape(host_eao, bbox = world_bbox) + tm_dots()
 ```
 
 
@@ -100,6 +101,7 @@ tm_shape(host_noa) + tm_dots()
 tm_shape(host_oce) + tm_dots()
 tm_shape(host_soa) + tm_dots()
 
+tm_shape(host_sf, bbox = world_bbox) + tm_dots() + tm_shape(world) + tm_borders()
 ```
 
 
@@ -117,5 +119,10 @@ ecoregions <- read_sf(here("data/us_eco_l3_state_boundaries/us_eco_l3_state_boun
 st_crs(ecoregions) <- world_crs
 ```
 
+```{r}
+us_ecoregions_map <- tm_shape(ecoregions) + tm_polygons()
+
+us_ecoregions_map + tm_shape(host_usa) + tm_dots()
+```
 
 
