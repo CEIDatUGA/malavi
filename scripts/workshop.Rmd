@@ -94,3 +94,14 @@ plot(st_geometry(border_eao))
 plot(st_geometry(host_eao), add = T)
 ```
 
+
+
+# EcoRegions
+
+```{r}
+ecoregions <- read_sf(here("data/us_eco_l3_state_boundaries/us_eco_l3_state_boundaries.shp"))
+st_crs(ecoregions) <- world_crs
+```
+
+
+
