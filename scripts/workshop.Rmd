@@ -31,18 +31,18 @@ world_bbox <- st_bbox(world)
 
 ```{r}
 host_sf <- host %>% mutate(lat = gsub("\\,.*", " ", host$coordinates),
-                           lon = gsub(".*,","",host$coordinates))
+                           lon = gsub(".*,", "",host$coordinates))
 
 host_sf %<>% drop_na(coordinates)
 
 host_sf %<>% mutate(lat = gsub(" ", "", host_sf$lat),
                     lon = gsub(" ", "", host_sf$lon))
 
-host_sf %<>% mutate(lat = gsub("°", " ", host_sf$lat),
-                    lon = gsub("°", " ", host_sf$lon))
-
-host_sf %<>% mutate(lat = gsub(".", " ", host_sf$lat, fixed = TRUE),
-                    lon = gsub(".", " ", host_sf$lon, fixed = TRUE))
+# host_sf %<>% mutate(lat = gsub("°", " ", host_sf$lat),
+#                     lon = gsub("°", " ", host_sf$lon))
+# 
+# host_sf %<>% mutate(lat = gsub(".", " ", host_sf$lat, fixed = TRUE),
+#                     lon = gsub(".", " ", host_sf$lon, fixed = TRUE))
 
 host_sf %<>% mutate(lat = gsub("'", "", host_sf$lat),
                     lon = gsub("'", "", host_sf$lon))
@@ -53,16 +53,51 @@ host_sf %<>% mutate(lat = gsub("`", "", host_sf$lat),
 host_sf %<>% mutate(lat = gsub("´", "", host_sf$lat),
                     lon = gsub("´", "", host_sf$lon))
 
+host_sf %<>% mutate(lat = gsub("′", "", host_sf$lat),
+                    lon = gsub("′", "", host_sf$lon))
+
+host_sf %<>% mutate(lat = gsub("’", "", host_sf$lat),
+                    lon = gsub("’", "", host_sf$lon))
+
+host_sf %<>% mutate(lat = gsub("0+$", "", host_sf$lat),
+                    lon = gsub("0+$", "", host_sf$lon))
+
+host_sf %<>% mutate(lat = gsub("^0+", "", host_sf$lat),
+                    lon = gsub("^0+", "", host_sf$lon))
+
+
 ## need to do this MANUALLY
 
+host_sf %<>% mutate(lat_deg = as.numeric(gsub("°.*", "", host_sf$lat)),
+                    lon_deg = as.numeric(gsub("°.*.", "", host_sf$lon)))
 
-host_sf %<>% mutate(lat_dd = as.numeric(measurements::conv_unit(host_sf$lat, from = 'deg_dec_min', to = 'dec_deg')),
-                    lon_dd = as.numeric(measurements::conv_unit(host_sf$lon, from = 'deg_dec_min', to = 'dec_deg')))
+host_sf %<>% mutate(lat_min = gsub(".*°", "", host_sf$lat),
+                    lon_min = gsub(".*°", "", host_sf$lon))
+
+host_sf %<>% mutate(lat_min = as.numeric(gsub("[.].*", "", host_sf$lat_min)),
+                    lon_min = as.numeric(gsub("[.].*", "", host_sf$lon_min)))
+
+host_sf %<>% mutate(lat_sec = gsub(".*°", "", host_sf$lat),
+                    lon_sec = gsub(".*°", "", host_sf$lon))
+
+host_sf %<>% mutate(lat_sec = as.numeric(gsub(".*[.]", "", host_sf$lat_sec)),
+                    lon_sec = as.numeric(gsub(".*[.]", "", host_sf$lon_sec)))
+
+host_sf %<>% mutate(lat_sec = replace_na(lat_sec, 0),
+                    lon_sec = replace_na(lon_sec, 0))
+
+#still some NA's due to zeroes in between non-zero characters
+
+host_sf %<>% filter(!is.na(lat_sec) && !is.na(lon_sec)) %>% mutate(lat_dd = lat_deg + (lat_min/60) + (lat_sec/3600),
+                                                                   lon_dd = lon_deg + (lon_min/60) + (lon_sec/3600))
+
+# host_sf %<>% mutate(lat_dd = as.numeric(measurements::conv_unit(host_sf$lat, from = 'deg_dec_min', to = 'dec_deg')),
+#                     lon_dd = as.numeric(measurements::conv_unit(host_sf$lon, from = 'deg_dec_min', to = 'dec_deg')))
 
 host_sf %<>% drop_na(lat_dd)
 host_sf %<>% drop_na(lon_dd)
 
-host_sf %<>% filter(lat_dd > -180)
+#host_sf %<>% filter(lat_dd > -180)
 
 host_sf <- st_as_sf(host_sf, coords = c("lon_dd", "lat_dd"), crs = world_crs, remove = F)
 ```
