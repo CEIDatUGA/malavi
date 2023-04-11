@@ -166,17 +166,16 @@ plot(st_geometry(host_eao), add = T)
 # EcoRegions
 
 ```{r}
-ecoregions <- read_sf(here("data/us_eco_l3_state_boundaries/us_eco_l3_state_boundaries.shp"))
+ecoregions <- read_sf(here("/Users/dcsuh/Desktop/tm_ecoregions_2017/tm_ecoregions_2017.shp"))
 #ecoregions <- ecoregions(class="sf")
 ecoregions_2 <- st_transform(ecoregions, world_crs)
-
-eco_simple <- simplify_shape(ecoregions_2)
+sf_use_s2(FALSE)
+#eco_simple <- simplify_shape(ecoregions_2)
 ```
 
 ```{r}
-us_ecoregions_map <- tm_shape(ecoregions) + tm_polygons()
-
-us_ecoregions_map + tm_shape(host_usa) + tm_dots()
+ecoregions_map <- tm_shape(ecoregions_2) + tm_polygons() + tm_shape(host_sf) + tm_dots()
+ecoregions_map
 ```
 
 
