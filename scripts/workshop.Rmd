@@ -170,11 +170,19 @@ ecoregions <- read_sf(here("/Users/dcsuh/Desktop/tm_ecoregions_2017/tm_ecoregion
 #ecoregions <- ecoregions(class="sf")
 ecoregions_2 <- st_transform(ecoregions, world_crs)
 sf_use_s2(FALSE)
-#eco_simple <- simplify_shape(ecoregions_2)
+eco_simple <- st_simplify(ecoregions)
+eco_simple <- st_transform(eco_simple, world_crs)
+eco_temperate <- eco_simple %>% filter(BIOME_NUM == 5)
 ```
 
 ```{r}
-ecoregions_map <- tm_shape(ecoregions_2) + tm_polygons() + tm_shape(host_sf) + tm_dots()
+simple_map <- tm_shape(eco_simple) + tm_polygons() + tm_shape(host_sf) + tm_dots()
+simple_map
+```
+
+
+```{r}
+ecoregions_map <- tm_shape(eco_head) + tm_fill() + tm_shape(host_sf) + tm_dots()
 ecoregions_map
 ```
 
