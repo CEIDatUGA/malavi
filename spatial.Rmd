@@ -1,0 +1,77 @@
+---
+title: "Assign x,y to ecoregions using sf toolkit"
+author: "Andrew W. Park"
+date: '2023-04-06'
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+```{r libLoad}
+library(tidyverse)
+library(magrittr)
+library(sf)
+library(measurements)
+```
+
+```{r getData}
+#ecoReg <- sf::st_read(dsn="~/Dropbox/andrew/RCN/data/natureConservancy",layer="tnc_terr_ecoregions")
+q <- readr::read_tsv(here("data/MalAvi_9131431.tsv"))
+```
+
+```{r manip}
+#reduce to records with lat/long
+q %<>% drop_na(coordinates)
+
+#turn coords column to lat long
+q %<>% mutate(lat = stringr::str_replace_all(coordinates,"\\,.*"," "),
+              lon = stringr::str_replace_all(coordinates,".*,",""))
+
+q %<>% mutate(lat = stringr::str_replace_all(lat," ",""),
+              lon = stringr::str_replace_all(lon," ",""))
+q %<>% mutate(lat = stringr::str_replace_all(lat,"°"," "),
+              lon = stringr::str_replace_all(lon,"°"," "))
+q %<>% mutate(lat = stringr::str_replace_all(lat,"º"," "),
+              lon = stringr::str_replace_all(lon,"º"," "))
+q %<>% mutate(lat = stringr::str_replace_all(lat,"'",""),
+              lon = stringr::str_replace_all(lon,"'",""))
+q %<>% mutate(lat = stringr::str_replace_all(lat,"`",""),
+              lon = stringr::str_replace_all(lon,"`",""))
+q %<>% mutate(lat = stringr::str_replace_all(lat,"´",""),
+              lon = stringr::str_replace_all(lon,"´",""))
+q %<>% mutate(lat = stringr::str_replace_all(lat,"′",""),
+              lon = stringr::str_replace_all(lon,"′",""))
+q %<>% mutate(lat = stringr::str_replace_all(lat,"’",""),
+              lon = stringr::str_replace_all(lon,"’",""))
+
+q %<>% mutate(lat = measurements::conv_unit(lat,from='deg_dec_min',to='dec_deg'),
+              lon = measurements::conv_unit(lon,from='deg_dec_min',to='dec_deg'))
+
+
+q %<>% mutate(lat=as.numeric(lat),
+              lon=as.numeric(lon))
+```
+
+```{r}
+
+
+q %<>% dplyr::filter(`#no`!=2642) #wrong coords
+
+pnts_sf <- st_as_sf(q, coords = c('lon', 'lat'), crs = st_crs(world))
+sf_use_s2(F)
+pnts <- pnts_sf %>% mutate(
+  intersection=as.integer(st_intersects(geometry, ecoReg))
+  ,area=if_else(is.na(intersection),'',ecoReg$ECO_NAME[intersection])
+) 
+
+pnts
+
+tmp <- pnts %>% dplyr::filter(area=="")
+
+
+```
+
+
