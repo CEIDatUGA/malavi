@@ -15,11 +15,15 @@ library(tidyverse)
 library(magrittr)
 library(sf)
 library(measurements)
+library(tmap)
+library(spData)
+library(here)
 ```
 
 ```{r getData}
-#ecoReg <- sf::st_read(dsn="~/Dropbox/andrew/RCN/data/natureConservancy",layer="tnc_terr_ecoregions")
+ecoReg <- sf::st_read("/Users/dcsuh/Desktop/Terrestrial_Ecoregions/Terrestrial_Ecoregions.shp")
 q <- readr::read_tsv(here("data/MalAvi_9131431.tsv"))
+ecoReg <- sf::st_transform(ecoReg, st_crs(world))
 ```
 
 ```{r manip}
@@ -55,13 +59,20 @@ q %<>% mutate(lat=as.numeric(lat),
               lon=as.numeric(lon))
 ```
 
+
+
 ```{r}
-
-
 q %<>% dplyr::filter(`#no`!=2642) #wrong coords
 
 pnts_sf <- st_as_sf(q, coords = c('lon', 'lat'), crs = st_crs(world))
 sf_use_s2(F)
+```
+
+```{r}
+tm_shape(pnts_sf) + tm_dots() + tm_shape(world) + tm_borders()
+```
+
+```{r}
 pnts <- pnts_sf %>% mutate(
   intersection=as.integer(st_intersects(geometry, ecoReg))
   ,area=if_else(is.na(intersection),'',ecoReg$ECO_NAME[intersection])
@@ -72,6 +83,10 @@ pnts
 tmp <- pnts %>% dplyr::filter(area=="")
 
 
+```
+
+```{r}
+tm_shape(world) + tm_borders() + tm_shape(pnts) + tm_dots(col = as.factor("area"), size = 0.1, legend.show = F) + tmap_options(max.categories = n_distinct(pnts$area))
 ```
 
 
