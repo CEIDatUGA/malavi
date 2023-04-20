@@ -96,3 +96,12 @@ tm_shape(world) + tm_borders() + missing_pts_tm
 ```
 
 do this again for wwf realms
+
+```{r}
+pnts_wwf <- pnts_sf %>% mutate(
+  intersection=as.integer(st_intersects(geometry, ecoReg))
+  ,area=if_else(is.na(intersection),'',ecoReg$WWF_MHTNAM[intersection])
+) 
+
+```
+
