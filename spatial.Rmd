@@ -95,3 +95,4 @@ missing_pts_tm <- pnts %>% filter(area == "") %>% tm_shape(.) + tm_dots()
 tm_shape(world) + tm_borders() + missing_pts_tm
 ```
 
+do this again for wwf realms
