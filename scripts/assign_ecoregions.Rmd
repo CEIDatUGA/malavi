@@ -1,7 +1,7 @@
 ---
 title: "Assign x,y to ecoregions using sf toolkit"
-author: "Andrew W. Park"
-date: '2023-04-06'
+author: "CEID Disease Mapping Working Group"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
 output: html_document
 ---
 
@@ -10,7 +10,7 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 
-```{r libLoad}
+```{r libLoad, message = F}
 library(tidyverse)
 library(magrittr)
 library(sf)
@@ -21,7 +21,8 @@ library(here)
 ```
 
 ```{r getData}
-ecoReg <- sf::st_read("/Users/dcsuh/Desktop/Terrestrial_Ecoregions/Terrestrial_Ecoregions.shp")
+#set correct path and uncomment next line to get ecoregions
+#ecoReg <- sf::st_read("/Users/dcsuh/Desktop/Terrestrial_Ecoregions/Terrestrial_Ecoregions.shp")
 q <- readr::read_tsv(here("data/MalAvi_9131431.tsv"))
 ecoReg <- sf::st_transform(ecoReg, st_crs(world))
 ```
@@ -61,47 +62,48 @@ q %<>% mutate(lat=as.numeric(lat),
 
 
 
-```{r}
+```{r make sf}
 #q %<>% dplyr::filter(`#no`!=2642) #wrong coords
-q %<>% dplyr::filter(lat>-300)
+q %<>% dplyr::filter(lat>-300) #remove weird points with very low lat
 
-pnts_sf <- st_as_sf(q, coords = c('lon', 'lat'), crs = st_crs(world))
-sf_use_s2(F)
+pnts_sf <- st_as_sf(q, coords = c('lon', 'lat'), crs = st_crs(world)) #make into sf object
+sf_use_s2(F) #spherical geometry OFF; not sure why we need to do this
 ```
 
-```{r}
-tm_shape(pnts_sf) + tm_dots() + tm_shape(world) + tm_borders()
+```{r basic map}
+tm_shape(pnts_sf) + tm_dots() + tm_shape(world) + tm_borders() #simple map
 ```
 
-```{r}
+```{r assign regions}
+#make new sf with columns indicating which ecoregion each point is in
 pnts <- pnts_sf %>% mutate(
-  intersection=as.integer(st_intersects(geometry, ecoReg))
-  ,area=if_else(is.na(intersection),'',ecoReg$ECO_NAME[intersection])
+  intersection=as.integer(st_intersects(geometry, ecoReg)),
+  ecoRegion=if_else(is.na(intersection),'',ecoReg$ECO_NAME[intersection]),
+  mht=if_else(is.na(intersection),'',ecoReg$WWF_MHTNAM[intersection]),
 ) 
-
-pnts
-
-tmp <- pnts %>% dplyr::filter(area=="")
-
-
 ```
 
-```{r}
-tm_shape(world) + tm_borders() + tm_shape(pnts) + tm_dots(col = as.factor("area"), size = 0.1, legend.show = F) + tmap_options(max.categories = n_distinct(pnts$area))
+```{r color points by ecoregion}
+tm_shape(world) + tm_borders() + 
+  tm_shape(pnts) + tm_dots(col = as.factor("ecoRegion"), size = 0.1, legend.show = F) + 
+  tmap_options(max.categories = n_distinct(pnts$ecoRegion))
 ```
 
-```{r}
-missing_pts_tm <- pnts %>% filter(area == "") %>% tm_shape(.) + tm_dots()
+```{r missing points}
+#save map object of missing points for ecoregion
+missing_pts_tm <- pnts %>% filter(ecoRegion == "") %>% tm_shape(.) + tm_dots() #NA's were previously labeled as "" (i.e. nothing)
 tm_shape(world) + tm_borders() + missing_pts_tm
 ```
 
-do this again for wwf realms
+```{r color points by mht}
+tm_shape(world) + tm_borders() + 
+  tm_shape(pnts) + tm_dots(col = as.factor("mht"), size = 0.1, legend.show = F) + 
+  tmap_options(max.categories = n_distinct(pnts$mht))
+```
 
-```{r}
-pnts_wwf <- pnts_sf %>% mutate(
-  intersection=as.integer(st_intersects(geometry, ecoReg))
-  ,area=if_else(is.na(intersection),'',ecoReg$WWF_MHTNAM[intersection])
-) 
-
+```{r save RDS}
+#save RDS of malavi points data with assigned ecoregions
+#uncomment next line if you need to save this again
+#saveRDS(pnts, file = here("data","processed_data","points.rds"))
 ```
 
