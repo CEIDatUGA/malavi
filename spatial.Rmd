@@ -62,7 +62,8 @@ q %<>% mutate(lat=as.numeric(lat),
 
 
 ```{r}
-q %<>% dplyr::filter(`#no`!=2642) #wrong coords
+#q %<>% dplyr::filter(`#no`!=2642) #wrong coords
+q %<>% dplyr::filter(lat>-300)
 
 pnts_sf <- st_as_sf(q, coords = c('lon', 'lat'), crs = st_crs(world))
 sf_use_s2(F)
@@ -89,4 +90,8 @@ tmp <- pnts %>% dplyr::filter(area=="")
 tm_shape(world) + tm_borders() + tm_shape(pnts) + tm_dots(col = as.factor("area"), size = 0.1, legend.show = F) + tmap_options(max.categories = n_distinct(pnts$area))
 ```
 
+```{r}
+missing_pts_tm <- pnts %>% filter(area == "") %>% tm_shape(.) + tm_dots()
+tm_shape(world) + tm_borders() + missing_pts_tm
+```
 
