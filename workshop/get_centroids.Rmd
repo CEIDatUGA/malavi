@@ -1,0 +1,49 @@
+---
+title: "Get Centroids"
+author: "CEID Disease Mapping Working Group"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r libLoad, message = F}
+library(tidyverse)
+library(magrittr)
+library(sf)
+library(measurements)
+library(tmap)
+library(spData)
+library(here)
+```
+
+```{r getData}
+#set correct path and uncomment next line to get ecoregions
+ecoReg <- sf::st_read("/Users/danielsuh/Desktop/Terrestrial_Ecoregions/Terrestrial_Ecoregions.shp")
+ecoReg <- sf::st_transform(ecoReg, st_crs(world))
+
+sf_use_s2(FALSE) #whether to use spherical geometry
+```
+
+```{r getCentroids}
+centroids <- st_centroid(ecoReg) #get centroids
+```
+
+```{r distanceMatrix}
+dist_mat <- as_tibble(st_distance(centroids, centroids)) #make distance matrix between all centroids
+rownames(dist_mat) <- centroids$ECO_CODE #rename rownames with something. here I just used ECO_CODE
+colnames(dist_mat) <- centroids$ECO_CODE #same thing with columns
+```
+
+
+Centroids will sometimes fall outside of a polygon depending on the shape of the polygon. st_point_on_surface() always chooses a point that is on the polygon.
+```{r centroidOnSurface}
+pts_on_surface <- st_point_on_surface(ecoReg)
+dist_mat_on_surface <- as_tibble(st_distance(pts_on_surface, pts_on_surface))
+rownames(dist_mat_on_surface) <- pts_on_surface$ECO_CODE
+colnames(dist_mat_on_surface) <- pts_on_surface$ECO_CODE
+```
+
+
