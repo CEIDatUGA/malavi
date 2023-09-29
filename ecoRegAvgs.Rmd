@@ -47,7 +47,7 @@ r2 <- terra::rast(r)
 
 # probably a clever way to do this (map functions in modelr package?) but this method is not terrible
 y <- exactextractr::exact_extract(r2,x$geometry[1]) #grabs world clim data for ecoregion - returned as list
-y <- y[[1]] #from list to df - not 'coverage_fraction' is how much of raster cell falls within shape
+y <- y[[1]] #from list to df - note 'coverage_fraction' is how much of raster cell falls within shape
 y %<>% summarize(across(1:19, ~weighted.mean(., w = coverage_fraction))) #mean for all 19 worldclim vars weighted by coverage_fraction
 y %<>% mutate(ecoregion=x$ECO_NAME[1]) # add name of ecoregion
 
