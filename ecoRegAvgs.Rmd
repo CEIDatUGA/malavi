@@ -51,7 +51,7 @@ y <- y[[1]] #from list to df - note 'coverage_fraction' is how much of raster ce
 y %<>% summarize(across(1:19, ~weighted.mean(., w = coverage_fraction))) #mean for all 19 worldclim vars weighted by coverage_fraction
 y %<>% mutate(ecoregion=x$ECO_NAME[1]) # add name of ecoregion
 
-for (i in 2:dim(x[2])){ # same as step above but looped over the remaining 2:n ecoregions
+for (i in 2:dim(x)[1]){ # same as step above but looped over the remaining 2:n ecoregions
   z <- exactextractr::exact_extract(r2,x$geometry[i])
   z <- z[[1]]
   z %<>% summarize(across(1:19, ~weighted.mean(., w = coverage_fraction)))
