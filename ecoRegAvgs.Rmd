@@ -1,0 +1,64 @@
+---
+title: "Extract data for World Clim"
+author: "Andrew W. Park"
+date: "2023-09-27"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r loadLibs}
+base::library(magrittr)
+base::library(tidyverse)
+base::library(raster)
+base::library(sf)
+base::library(exactextractr)
+base::library(terra)
+```
+
+extracting bioclim data (WorldClim data has a scale factor of 10, so Temp = -37 is -3.7 ºC.)
+
+```{r, warning=FALSE}
+r <- raster::getData('worldclim',var='bio',res=10)
+```
+
+
+```{r getData}
+pnts <- base::readRDS("./data/processed_data/points.rds")
+```
+
+
+
+```{r}
+#pick 2 ecoregions with malavi data and (likely) different environmental conditions
+e1 <- "Alaska Range"
+e2 <- "Central Asian Northern Desert"
+
+# i don't think we'll have this data on github - sorry about the personal path
+ecoReg <- sf::st_read(dsn="~/Dropbox/andrew/RCN/data/natureConservancy",layer="tnc_terr_ecoregions")
+
+# this will ultimately be the ecoregions with malavi data - here just 2 as an example
+x <- ecoReg %<>% dplyr::filter(ECO_NAME %in% c(e1,e2))
+
+# the exactextract function recommends this conversion for accuracy when extracting from raster stack
+r2 <- terra::rast(r)
+
+# probably a clever way to do this (map functions in modelr package?) but this method is not terrible
+y <- exactextractr::exact_extract(r2,x$geometry[1]) #grabs world clim data for ecoregion - returned as list
+y <- y[[1]] #from list to df - not 'coverage_fraction' is how much of raster cell falls within shape
+y %<>% summarize(across(1:19, ~weighted.mean(., w = coverage_fraction))) #mean for all 19 worldclim vars weighted by coverage_fraction
+y %<>% mutate(ecoregion=x$ECO_NAME[1]) # add name of ecoregion
+
+for (i in 2:dim(x[2])){ # same as step above but looped over the remaining 2:n ecoregions
+  z <- exactextractr::exact_extract(r2,x$geometry[i])
+  z <- z[[1]]
+  z %<>% summarize(across(1:19, ~weighted.mean(., w = coverage_fraction)))
+  z %<>% mutate(ecoregion=x$ECO_NAME[i])
+  y %<>% add_case(z) #adds new ecoregion to the original y so y keeps growing and ends up as one df with all ecoregs and all 19 bioclim vars averaged
+}
+
+
+```
+
