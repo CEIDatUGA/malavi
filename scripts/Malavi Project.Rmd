@@ -1,0 +1,220 @@
+---
+title: "Malavi Mapping Group Project"
+author: "CEID Disease Mapping Working Group"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output: html_document
+---
+  
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+```{r libLoad, message = F}
+library(tidyverse)
+library(magrittr)
+library(sf)
+library(measurements)
+library(tmap)
+library(spData)
+library(here)
+```
+
+```{r getData}
+#set correct path and uncomment next line to get ecoregions
+ecoReg <- sf::st_read("Terrestrial_Ecoregions.shp")
+q <- readr::read_tsv(here("MalAvi_9794263.csv"))
+q <- subset(q, q$Host_Environment == "Wild")
+ecoReg <- sf::st_transform(ecoReg, st_crs(world))
+```
+
+```{r manip}
+#reduce to records with lat/long
+q %<>% drop_na(coordinates)
+
+#turn coords column to lat long
+q %<>% mutate(lat = stringr::str_replace_all(coordinates,"\\,.*"," "),
+              lon = stringr::str_replace_all(coordinates,".*,",""))
+
+q %<>% mutate(lat = stringr::str_replace_all(lat," ",""),
+              lon = stringr::str_replace_all(lon," ",""))
+q %<>% mutate(lat = stringr::str_replace_all(lat,"°"," "),
+              lon = stringr::str_replace_all(lon,"°"," "))
+q %<>% mutate(lat = stringr::str_replace_all(lat,"º"," "),
+              lon = stringr::str_replace_all(lon,"º"," "))
+q %<>% mutate(lat = stringr::str_replace_all(lat,"'",""),
+              lon = stringr::str_replace_all(lon,"'",""))
+q %<>% mutate(lat = stringr::str_replace_all(lat,"`",""),
+              lon = stringr::str_replace_all(lon,"`",""))
+q %<>% mutate(lat = stringr::str_replace_all(lat,"´",""),
+              lon = stringr::str_replace_all(lon,"´",""))
+q %<>% mutate(lat = stringr::str_replace_all(lat,"′",""),
+              lon = stringr::str_replace_all(lon,"′",""))
+q %<>% mutate(lat = stringr::str_replace_all(lat,"’",""),
+              lon = stringr::str_replace_all(lon,"’",""))
+
+q %<>% mutate(lat = measurements::conv_unit(lat,from='deg_dec_min',to='dec_deg'),
+              lon = measurements::conv_unit(lon,from='deg_dec_min',to='dec_deg'))
+
+
+q %<>% mutate(lat=as.numeric(lat),
+              lon=as.numeric(lon))
+```
+
+
+
+```{r make sf}
+#q %<>% dplyr::filter(`#no`!=2642) #wrong coords
+q %<>% dplyr::filter(lat>-300) #remove weird points with very low lat
+
+pnts_sf <- st_as_sf(q, coords = c('lon', 'lat'), crs = st_crs(world)) #make into sf object
+sf_use_s2(F) #spherical geometry OFF; not sure why we need to do this
+```
+
+```{r basic map}
+tm_shape(pnts_sf) + tm_dots() + tm_shape(world) + tm_borders() #simple map
+```
+
+```{r assign regions}
+#make new sf with columns indicating which ecoregion each point is in
+pnts <- pnts_sf %>% mutate(
+  intersection=as.integer(st_intersects(geometry, ecoReg)),
+  ecoRegion=if_else(is.na(intersection),'',ecoReg$ECO_NAME[intersection]),
+  mht=if_else(is.na(intersection),'',ecoReg$WWF_MHTNAM[intersection]),
+) 
+```
+
+```{r color points by ecoregion}
+tm_shape(world) + tm_borders() + 
+  tm_shape(pnts) + tm_dots(col = as.factor("ecoRegion"), size = 0.1, legend.show = F) + 
+  tmap_options(max.categories = n_distinct(pnts$ecoRegion))
+```
+
+```{r missing points}
+#save map object of missing points for ecoregion
+missing_pts_tm <- pnts %>% filter(ecoRegion == "") %>% tm_shape(.) + tm_dots() #NA's were previously labeled as "" (i.e. nothing)
+tm_shape(world) + tm_borders() + missing_pts_tm
+```
+
+```{r color points by mht}
+tm_shape(world) + tm_borders() + 
+  tm_shape(pnts) + tm_dots(col = as.factor("mht"), size = 0.1, legend.show = F) + 
+  tmap_options(max.categories = n_distinct(pnts$mht))
+```
+
+```{r save RDS}
+#save RDS of malavi points data with assigned ecoregions
+#uncomment next line if you need to save this again
+#saveRDS(pnts, file = here("data","processed_data","points.rds"))
+```
+
+
+
+```{r data-summary}
+unique_eco.regions <- length(unique(ep$ecoRegion)) #246
+unique_lineages <- length(unique(ep$Lineage_Name)) #3011
+unique_bird.sp <- length(unique(pnts$species[pnts$ecoRegion != ""])) #1552
+unique_bird.fam <- length(unique(pnts$family[pnts$ecoRegion != ""])) #112
+unique_bird.ord <- length(unique(pnts$order[pnts$ecoRegion != ""])) #26
+
+Bird.sp <- unique(pnts$species[pnts$ecoRegion != ""])
+str(Bird.sp)
+write.csv(Bird.sp, "Bird.sp.csv")
+```
+
+
+
+```{r Parasite Jaccard Index between Ecoregions (Pairwise)}
+### Jaccard index per Ecoregion (pairwise comparison) ###
+library(dplyr)
+
+# Jaccard comparisons
+jaccard <- function(a, b) {
+  intersection = length(intersect(a,b))
+  union = length(a) + length(b) - intersection
+  return (intersection/union)
+}
+
+ep <- pnts %>% dplyr::select(ecoRegion, Lineage_Name) %>% distinct()
+ep <- ep %>%
+  filter(ecoRegion != "")
+ep <- as.data.frame(ep)
+ep <- ep[c("ecoRegion", "Lineage_Name")]
+
+myecoR <- ep %>% dplyr::select(ecoRegion) %>% distinct() %>% pull()
+myecoR <- as.data.frame(myecoR)
+
+myJaccard <- tibble(ecoregion1=character(0),ecoregion2=character(0),jaccard=numeric(0)) 
+
+for (i in 1:length(myecoR$myecoR)){
+  for (j in i:length(myecoR$myecoR)){
+    if (i!=j){
+      ecoRA <- myecoR$myecoR[i]
+      ecoRB <- myecoR$myecoR[j]
+      ep_A <- ep %>% dplyr::filter(ecoRegion == ecoRA) %>% dplyr::select(Lineage_Name) %>% pull()
+      ep_B <- ep %>% dplyr::filter(ecoRegion == ecoRB) %>% dplyr::select(Lineage_Name) %>% pull()
+      jaccardValue <- jaccard(ep_A,ep_B)
+      myJaccard %<>% add_case(ecoregion1=ecoRA,ecoregion2=ecoRB,jaccard=jaccardValue)
+    }
+  }
+}
+
+write_csv(myJaccard, "Jaccard.Results.csv")
+```
+
+```{r Bird (all) Jaccard Index per Ecoregion (Pairwise)}
+# Packages needed
+library(tidyverse)
+library(magrittr)
+library(sf)
+library(rgdal)
+
+# Downloading data
+# Ecoregion data
+ecoReg <- sf::st_read("Terrestrial_Ecoregions.shp")
+
+# Bird distribution data (subset with our species of interest from Birdlife)
+birdDis <- sf::st_read(dsn = "Bird_Dist_Malavi 1.gpkg")
+
+ecoReg <- sf::st_make_valid(ecoReg)
+sf::sf_use_s2(FALSE)
+
+# Subset of species to practice
+# species_to_select <- c("Catharus frantzii", "Grus japonensis", "Amazilia beryllina")
+# birDis.sub <- birdDis[birdDis$sci_name %in% species_to_select, ]
+
+
+ecoReg <- st_transform(ecoReg, crs = st_crs(birdDis))
+ecoregion_names <- unique(ecoReg$ECO_NAME)
+
+# Initialize an empty matrix to store the results
+result_matrix <- matrix(0, nrow = length(ecoregion_names), ncol = length(unique(birdDis$sci_name)),
+                        dimnames = list(ecoregion_names, unique(birdDis$sci_name)))
+
+
+
+#### Not sure what Im doing wrong but the intersection between these 2 layers is not working as expected. Some species 
+#### that distribute next to the equator has a 1 (presence) in the Alaska ecoregion.
+#### This for loop could be improved if we specify that we only want to check those ecoregion we have datahost-malaria with coordinates.
+
+
+# Loop through each combination of species and ecoregion
+for (i in 1:length(birdDis$sci_name)) {
+  species <- birdDis$sci_name[i]
+  species_polygon <- birdDis[birdDis$sci_name == species, ]
+  
+  for (j in 1:length(ecoregion_names)) {
+    ecoregion <- ecoregion_names[j]
+    ecoregion_polygon <- ecoReg[ecoReg$ECO_NAME == ecoregion, ]
+    
+    # Check for intersection
+    if (nrow(st_intersection(species_polygon, ecoregion_polygon)) > 0) {
+      result_matrix[j, i] <- 1
+    }
+  }
+}
+
+# Print the result matrix
+print(result_matrix)
+```
+
