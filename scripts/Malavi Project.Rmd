@@ -22,8 +22,8 @@ library(here)
 
 ```{r getData}
 #set correct path and uncomment next line to get ecoregions
-ecoReg <- sf::st_read("Terrestrial_Ecoregions.shp")
-q <- readr::read_tsv(here("MalAvi_9794263.csv"))
+ecoReg <- sf::st_read("/Users/danielsuh/Desktop/Terrestrial_Ecoregions/Terrestrial_Ecoregions.shp")
+q <- readr::read_tsv(here("data","MalAvi_9131431.tsv"))
 q <- subset(q, q$Host_Environment == "Wild")
 ecoReg <- sf::st_transform(ecoReg, st_crs(world))
 ```
@@ -111,15 +111,15 @@ tm_shape(world) + tm_borders() +
 
 
 ```{r data-summary}
-unique_eco.regions <- length(unique(ep$ecoRegion)) #246
-unique_lineages <- length(unique(ep$Lineage_Name)) #3011
+
 unique_bird.sp <- length(unique(pnts$species[pnts$ecoRegion != ""])) #1552
 unique_bird.fam <- length(unique(pnts$family[pnts$ecoRegion != ""])) #112
 unique_bird.ord <- length(unique(pnts$order[pnts$ecoRegion != ""])) #26
 
 Bird.sp <- unique(pnts$species[pnts$ecoRegion != ""])
 str(Bird.sp)
-write.csv(Bird.sp, "Bird.sp.csv")
+
+#write.csv(Bird.sp, here("data","processed_data","Bird.sp.csv"))
 ```
 
 
@@ -159,8 +159,17 @@ for (i in 1:length(myecoR$myecoR)){
   }
 }
 
-write_csv(myJaccard, "Jaccard.Results.csv")
+#write_csv(myJaccard, here("data", "processed_data", "Jaccard.Results.csv"))
 ```
+
+
+```{r}
+
+unique_eco.regions <- length(unique(ep$ecoRegion)) #246
+unique_lineages <- length(unique(ep$Lineage_Name)) #3011
+
+```
+
 
 ```{r Bird (all) Jaccard Index per Ecoregion (Pairwise)}
 # Packages needed
@@ -171,7 +180,7 @@ library(rgdal)
 
 # Downloading data
 # Ecoregion data
-ecoReg <- sf::st_read("Terrestrial_Ecoregions.shp")
+#ecoReg <- sf::st_read("Terrestrial_Ecoregions.shp")
 
 # Bird distribution data (subset with our species of interest from Birdlife)
 birdDis <- sf::st_read(dsn = "Bird_Dist_Malavi 1.gpkg")
