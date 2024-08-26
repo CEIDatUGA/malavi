@@ -33,9 +33,21 @@ centroids <- st_centroid(ecoReg) #get centroids
 
 ```{r distanceMatrix}
 dist_mat <- as_tibble(st_distance(centroids, centroids)) #make distance matrix between all centroids
-rownames(dist_mat) <- centroids$ECO_CODE #rename rownames with something. here I just used ECO_CODE
-colnames(dist_mat) <- centroids$ECO_CODE #same thing with columns
+dist_mat <- drop_units(dist_mat)
+rownames(dist_mat) <- centroids$ECO_NAME #rename rownames with something. here I just used ECO_NAME
+colnames(dist_mat) <- centroids$ECO_NAME #same thing with columns
 ```
+
+```{r}
+centroid_distances <- dist_mat %>% 
+  rownames_to_column(., var = "ECO_NAME") %>% 
+  pivot_longer(cols = 2:815,
+               names_to = "ECO_NAME_2",
+               values_to = "meters")
+
+saveRDS(centroid_distances, file = here("data", "processed_data", "centroid_dist.rds"))
+```
+
 
 
 Centroids will sometimes fall outside of a polygon depending on the shape of the polygon. st_point_on_surface() always chooses a point that is on the polygon.
