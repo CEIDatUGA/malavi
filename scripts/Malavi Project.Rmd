@@ -1,0 +1,567 @@
+---
+title: "Malavi Mapping Group Project"
+author: "CEID Disease Mapping Working Group"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output: html_document
+---
+  
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+```{r libLoad, message = F}
+library(tidyverse)
+library(magrittr)
+library(sf)
+library(measurements)
+library(tmap)
+library(spData)
+library(here)
+```
+
+```{r getData}
+#set correct path and uncomment next line to get ecoregions
+ecoReg <- sf::st_read("Terrestrial_Ecoregions.shp")
+q <- readr::read_tsv(here("MalAvi_9794263.csv"))
+q <- subset(q, q$Host_Environment == "Wild")
+ecoReg <- sf::st_transform(ecoReg, st_crs(world))
+```
+
+```{r manip}
+#reduce to records with lat/long
+q %<>% drop_na(coordinates)
+
+#turn coords column to lat long
+q %<>% mutate(lat = stringr::str_replace_all(coordinates,"\\,.*"," "),
+              lon = stringr::str_replace_all(coordinates,".*,",""))
+
+q %<>% mutate(lat = stringr::str_replace_all(lat," ",""),
+              lon = stringr::str_replace_all(lon," ",""))
+q %<>% mutate(lat = stringr::str_replace_all(lat,"°"," "),
+              lon = stringr::str_replace_all(lon,"°"," "))
+q %<>% mutate(lat = stringr::str_replace_all(lat,"º"," "),
+              lon = stringr::str_replace_all(lon,"º"," "))
+q %<>% mutate(lat = stringr::str_replace_all(lat,"'",""),
+              lon = stringr::str_replace_all(lon,"'",""))
+q %<>% mutate(lat = stringr::str_replace_all(lat,"`",""),
+              lon = stringr::str_replace_all(lon,"`",""))
+q %<>% mutate(lat = stringr::str_replace_all(lat,"´",""),
+              lon = stringr::str_replace_all(lon,"´",""))
+q %<>% mutate(lat = stringr::str_replace_all(lat,"′",""),
+              lon = stringr::str_replace_all(lon,"′",""))
+q %<>% mutate(lat = stringr::str_replace_all(lat,"’",""),
+              lon = stringr::str_replace_all(lon,"’",""))
+
+q %<>% mutate(lat = measurements::conv_unit(lat,from='deg_dec_min',to='dec_deg'),
+              lon = measurements::conv_unit(lon,from='deg_dec_min',to='dec_deg'))
+
+
+q %<>% mutate(lat=as.numeric(lat),
+              lon=as.numeric(lon))
+```
+
+
+
+```{r make sf}
+#q %<>% dplyr::filter(`#no`!=2642) #wrong coords
+q %<>% dplyr::filter(lat>-300) #remove weird points with very low lat
+
+pnts_sf <- st_as_sf(q, coords = c('lon', 'lat'), crs = st_crs(world)) #make into sf object
+sf_use_s2(F) #spherical geometry OFF; not sure why we need to do this
+```
+
+```{r basic map}
+tm_shape(pnts_sf) + tm_dots() + tm_shape(world) + tm_borders() #simple map
+```
+
+```{r assign regions}
+#make new sf with columns indicating which ecoregion each point is in
+pnts <- pnts_sf %>% mutate(
+  intersection=as.integer(st_intersects(geometry, ecoReg)),
+  ecoRegion=if_else(is.na(intersection),'',ecoReg$ECO_NAME[intersection]),
+  mht=if_else(is.na(intersection),'',ecoReg$WWF_MHTNAM[intersection]),
+) 
+```
+
+```{r color points by ecoregion}
+tm_shape(world) + tm_borders() + 
+  tm_shape(pnts) + tm_dots(col = as.factor("ecoRegion"), size = 0.1, legend.show = F) + 
+  tmap_options(max.categories = n_distinct(pnts$ecoRegion))
+```
+
+```{r missing points}
+#save map object of missing points for ecoregion
+missing_pts_tm <- pnts %>% filter(ecoRegion == "") %>% tm_shape(.) + tm_dots() #NA's were previously labeled as "" (i.e. nothing)
+tm_shape(world) + tm_borders() + missing_pts_tm
+```
+
+```{r color points by mht}
+tm_shape(world) + tm_borders() + 
+  tm_shape(pnts) + tm_dots(col = as.factor("mht"), size = 0.1, legend.show = F) + 
+  tmap_options(max.categories = n_distinct(pnts$mht))
+```
+
+```{r save RDS}
+#save RDS of malavi points data with assigned ecoregions
+#uncomment next line if you need to save this again
+#saveRDS(pnts, file = here("data","processed_data","points.rds"))
+```
+
+
+
+```{r data-summary}
+ep <- pnts %>% dplyr::select(ecoRegion, Lineage_Name) %>% distinct()
+ep <- ep %>%
+  filter(ecoRegion != "")
+ep <- as.data.frame(ep)
+ep <- ep[c("ecoRegion", "Lineage_Name")]
+unique_eco.regions <- length(unique(pnts$ecoRegion)) #247
+unique_lineages <- length(unique(ep$Lineage_Name)) #3011
+unique_bird.sp <- length(unique(pnts$species[pnts$ecoRegion != ""])) #1552
+unique_bird.fam <- length(unique(pnts$family[pnts$ecoRegion != ""])) #112
+unique_bird.ord <- length(unique(pnts$order[pnts$ecoRegion != ""])) #26
+
+Bird.sp <- unique(pnts$species[pnts$ecoRegion != ""])
+str(Bird.sp)
+write.csv(Bird.sp, "Bird.sp.csv")
+```
+
+
+
+```{r Parasite Jaccard Index between Ecoregions (Pairwise)}
+### Jaccard index per Ecoregion (pairwise comparison) ###
+library(dplyr)
+
+# Jaccard function
+jaccard <- function(a, b) {
+  intersection = length(intersect(a,b))
+  union = length(a) + length(b) - intersection
+  return (intersection/union)
+}
+
+myecoR <- ep %>% dplyr::select(ecoRegion) %>% distinct() %>% pull()
+myecoR <- as.data.frame(myecoR)
+
+myJaccard <- tibble(ecoregion1=character(0),ecoregion2=character(0),jaccard=numeric(0)) 
+
+for (i in 1:length(myecoR$myecoR)){
+  for (j in i:length(myecoR$myecoR)){
+    if (i!=j){
+      ecoRA <- myecoR$myecoR[i]
+      ecoRB <- myecoR$myecoR[j]
+      ep_A <- ep %>% dplyr::filter(ecoRegion == ecoRA) %>% dplyr::select(Lineage_Name) %>% pull()
+      ep_B <- ep %>% dplyr::filter(ecoRegion == ecoRB) %>% dplyr::select(Lineage_Name) %>% pull()
+      jaccardValue <- jaccard(ep_A,ep_B)
+      myJaccard %<>% add_case(ecoregion1=ecoRA,ecoregion2=ecoRB,jaccard=jaccardValue)
+    }
+  }
+}
+
+# Saving malaria lineages Jaccard index
+write_csv(myJaccard, "Malavi.Parasite.Jaccard.csv")
+```
+
+```{r Parasite cJaccard Index between Ecoregions (Pairwise)}
+# Corrected Jaccard function
+cJaccard <- function(a, b) {
+  intersection <- length(intersect(a, b))
+  possible <- min(length(a), length(b))
+  return (intersection / possible)
+}
+
+# Extracting distinct ecoregions
+myecoR <- ep %>% dplyr::select(ecoRegion) %>% distinct() %>% pull()
+myecoR <- as.data.frame(myecoR)
+
+# Empty tibble for storing results
+myCorrectedJaccard <- tibble(ecoregion1 = character(0),
+                             ecoregion2 = character(0),
+                             cJaccard = numeric(0)) 
+
+# Loop through the ecoregions to get the corrected Jaccard index
+for (i in 1:length(myecoR$myecoR)) {
+  for (j in i:length(myecoR$myecoR)) {
+    if (i != j) {
+      ecoRA <- myecoR$myecoR[i]
+      ecoRB <- myecoR$myecoR[j]
+      
+      # Get the lineagees for each ecoregion
+      ep_A <- ep %>% dplyr::filter(ecoRegion == ecoRA) %>% dplyr::select(Lineage_Name) %>% pull()
+      ep_B <- ep %>% dplyr::filter(ecoRegion == ecoRB) %>% dplyr::select(Lineage_Name) %>% pull()
+      
+      # Calculate the corrected Jaccard index
+      cJaccardValue <- cJaccard(ep_A, ep_B)
+      
+      myCorrectedJaccard %<>% add_case(ecoregion1 = ecoRA,
+                                       ecoregion2 = ecoRB,
+                                       cJaccard = cJaccardValue)
+    }
+  }
+}
+
+write.csv(myCorrectedJaccard, "Malavi.parasite.cjaccard.csv")
+```
+
+
+```{r Interection Birds-Ecoregions}
+# Here I'm assigning birds with ecoregions
+# Packages needed
+library(tidyverse)
+library(magrittr)
+library(sf)
+library(rgdal)
+
+# Downloading data
+# Ecoregion data
+ecoReg <- sf::st_read("Terrestrial_Ecoregions.shp")
+
+# Bird distribution data (subset with our species of interest from Birdlife)
+birdDis <- sf::st_read(dsn = "Bird_Dist_Malavi 1.gpkg")
+
+ecoReg <- sf::st_make_valid(ecoReg)
+sf::sf_use_s2(FALSE)
+
+
+uniqueBirds <- unique(birdDis$sci_name)
+ecoReg <- st_transform(ecoReg, crs = st_crs(birdDis))
+
+ecoReg <- ecoReg %>%
+  filter(ECO_NAME %in% pnts$ecoRegion)
+ecoregion_names <- unique(ecoReg$ECO_NAME)
+
+# Empty matrix to store our results
+result_matrix <- matrix(0, nrow = length(ecoregion_names), ncol = length(uniqueBirds),
+                        dimnames = list(ecoregion_names, uniqueBirds))
+
+
+# Loop through each combination of species and ecoregions
+for (i in length(uniqueBirds))
+  species <- uniqueBirds[i]
+  species_polygon <- birdDis[birdDis$sci_name == species, ]
+ 
+   for (j in 1:length(ecoregion_names)) {
+     if (!j %in% c(473,475)){
+     ecoregion <- ecoregion_names[j]
+     ecoregion_polygon <- ecoReg[ecoReg$ECO_NAME == ecoregion, ]
+   
+    # Check for intersection
+    if (nrow(st_intersection(species_polygon, ecoregion_polygon)) > 0) {
+      result_matrix[j, i] <- 1
+    }
+     }
+  }
+
+# Just checking
+idx1 <- which(result_matrix[,1]==1)
+idx2 <- which(result_matrix[,2]==1)
+idx4 <- which(result_matrix[,4]==1)
+
+plot(ecoReg$geometry[idx1])
+
+# write.csv(result_matrix, "result_matrix.csv")
+result_matrix <- read.csv("result_matrix.csv")
+
+# Print the result matrix
+print(result_matrix)
+```
+
+
+```{r Bird (all) Jaccard Index per Ecoregion (Pairwise)}
+# Jaccard function:
+jaccard <- function(a, b) {
+  intersection = sum(a & b)
+  union = sum(a | b)
+  return(intersection / union)
+}
+
+# Extracting ecoregion names
+ecoregions <- result_matrix$X
+
+# Selecting only the columns with species data
+result_a_matrix <- result_matrix[, -1]
+
+# Creating an empty dataframe to store our results
+jaccard_df <- data.frame(ecoregion_A = character(),
+                         ecoregion_B = character(),
+                         jaccard_index = numeric(),
+                         stringsAsFactors = FALSE)
+
+# Calculating Jaccard index for pairwise ecoregion comparisons (of all bird species)
+for (i in 1:(nrow(result_a_matrix) - 1)) {
+  for (j in (i + 1):nrow(result_a_matrix)) {
+    ecoregion_A <- ecoregions[i]
+    ecoregion_B <- ecoregions[j]
+    species_A <- result_a_matrix[i, ]
+    species_B <- result_a_matrix[j, ]
+    jaccard_value <- jaccard(species_A, species_B)
+    # Adding the result to the dataframe
+    jaccard_df <- rbind(jaccard_df, data.frame(ecoregion_A = ecoregion_A,
+                                               ecoregion_B = ecoregion_B,
+                                               jaccard_index = jaccard_value))
+  }
+}
+
+write.csv(jaccard_df, "Malavi.bird.jaccard.csv")
+```
+
+
+```{r Merging Jaccard Indexes per Ecoregion (Pairwise)}
+# Renaming columns in myJaccard to match the column names in results_df
+myJaccard <- myJaccard %>%
+  rename(Ecoregion1 = ecoregion1, Ecoregion2 = ecoregion2)
+
+# Merging dataframes using dplyr's left_join
+merged_df <- left_join(result_df, myJaccard, by = c("Ecoregion1", "Ecoregion2"))
+
+merged_df <- merged_df[!duplicated(t(apply(merged_df[c("Ecoregion1", "Ecoregion2")], 1, sort))), ]
+
+merged_df <- merged_df %>%
+  rename(Jaccard.Birds = JaccardIndex, Jaccard.Malaria = jaccard)
+
+# Print the resulting data frame
+print(merged_df)
+```
+
+
+```{r Classifying migratory vs resident birds}
+# Here Im assigning each bird species to one of the 2 categories: Resident or Migratory
+# For this I'm using the metadata of the polygons (distribution)
+
+# Downloading the data
+polygon.data <- read.csv("Bird.Polygons.Malavi.csv")
+
+# Remove rows with season value of 5 (metadata)
+polygon.data <- polygon.data[polygon.data$seasonal != 5, ]
+
+# Function to classify species.
+classify_species <- function(polygon.data) {
+  result <- aggregate(seasonal ~ sci_name, polygon.data, function(x) {
+    if (all(x == 1)) {
+      "resident"
+    } else {
+      "migratory"
+    }
+  })
+  return(result)
+}
+
+# Applying the classification
+species_classification <- classify_species(polygon.data)
+print(species_classification)
+```
+
+
+```{r Bird (migratory) Jaccard Index per Ecoregion (Pairwise)}
+# Replace dots with spaces in column names to make them match
+colnames(result_matrix) <- gsub(".", " ", colnames(result_matrix), fixed = TRUE)
+
+# Filtering the dataframe to include only Migratory species
+migratory_species <- species_classification[species_classification$seasonal == "migratory", "sci_name"]
+
+# Subset the dataframe based on migratory species
+result_matrix_m <- result_matrix[, c("X", names(result_matrix)[names(result_matrix) %in% migratory_species])]
+
+# Extracting ecoregion names
+ecoregions <- result_matrix_m$X
+
+# Selecting only the columns with species data
+result_m_matrix <- result_matrix_m[, -1]
+
+# Creating an empty dataframe to store the results
+jaccard_m_df <- data.frame(ecoregion_A = character(),
+                         ecoregion_B = character(),
+                         jaccard_index = numeric(),
+                         stringsAsFactors = FALSE)
+
+# Calculating Jaccard index for pairwise ecoregions
+for (i in 1:(nrow(result_m_matrix) - 1)) {
+  for (j in (i + 1):nrow(result_m_matrix)) {
+    ecoregion_A <- ecoregions[i]
+    ecoregion_B <- ecoregions[j]
+    species_A <- result_m_matrix[i, ]
+    species_B <- result_m_matrix[j, ]
+    jaccard_value <- jaccard(species_A, species_B)
+    # Adding the result to the dataframe
+    jaccard_m_df <- rbind(jaccard_m_df, data.frame(ecoregion_A = ecoregion_A,
+                                               ecoregion_B = ecoregion_B,
+                                               jaccard_index = jaccard_value))
+  }
+}
+
+# Saving the results
+write.csv(jaccard_m_df, "Malavi.M.bird.jaccard.csv")
+```
+
+
+```{r Bird (resident) Jaccard Index per Ecoregion (Pairwise)}
+# Filter the dataframe to include only resident species
+# Replace dots with spaces in column names
+colnames(result_matrix) <- gsub(".", " ", colnames(result_matrix), fixed = TRUE)
+
+resident_species <- species_classification[species_classification$seasonal == "resident", "sci_name"]
+
+# Subset the dataframe based on resident species
+result_matrix_r <- result_matrix[, c("X", names(result_matrix)[names(result_matrix) %in% resident_species])]
+
+# Extracting ecoregion names
+ecoregions <- result_matrix_r$X
+
+# Selecting only the columns with species data
+result_r_matrix <- result_matrix_r[, -1]
+
+# Creating an empty dataframe to store results
+jaccard_r_df <- data.frame(ecoregion_A = character(),
+                         ecoregion_B = character(),
+                         jaccard_index = numeric(),
+                         stringsAsFactors = FALSE)
+
+# Calculating Jaccard index for pairwise ecoregions
+for (i in 1:(nrow(result_r_matrix) - 1)) {
+  for (j in (i + 1):nrow(result_r_matrix)) {
+    ecoregion_A <- ecoregions[i]
+    ecoregion_B <- ecoregions[j]
+    species_A <- result_r_matrix[i, ]
+    species_B <- result_r_matrix[j, ]
+    jaccard_value <- jaccard(species_A, species_B)
+    # Adding the result to the dataframe
+    jaccard_r_df <- rbind(jaccard_r_df, data.frame(ecoregion_A = ecoregion_A,
+                                               ecoregion_B = ecoregion_B,
+                                               jaccard_index = jaccard_value))
+  }
+}
+
+# Saving our results
+write.csv(jaccard_r_df, "Malavi.R.bird.jaccard.csv")
+```
+
+```{r Bird (all) Corrected Jaccard Index per Ecoregion (Pairwise)}
+# Estimating the corrected jaccard index of all bird species
+# Corrected Jaccard function
+cJaccard <- function(a, b){
+  intersection <- sum(a & b)
+  possible <- min(sum(a), sum(b))
+  return(intersection / possible)
+}
+
+# Extracting ecoregion names
+ecoregions <- result_matrix$X
+
+# Selecting only the columns with species data
+result_a_matrix <- result_matrix[, -1]
+
+# Creating an empty dataframe to store results
+cJaccard_df <- data.frame(ecoregion_A = character(),
+                          ecoregion_B = character(),
+                          cJaccard_index = numeric(),
+                          stringsAsFactors = FALSE)
+
+# Calculating Corrected Jaccard index for pairwise ecoregion comparisons
+for (i in 1:(nrow(result_a_matrix) - 1)) {
+  for (j in (i + 1):nrow(result_a_matrix)) {
+    ecoregion_A <- ecoregions[i]
+    ecoregion_B <- ecoregions[j]
+    species_A <- result_a_matrix[i, ]
+    species_B <- result_a_matrix[j, ]
+    cJaccard_value <- cJaccard(species_A, species_B)
+    # Adding the result to the dataframe
+    cJaccard_df <- rbind(cJaccard_df, data.frame(ecoregion_A = ecoregion_A,
+                                                 ecoregion_B = ecoregion_B,
+                                                 cJaccard_index = cJaccard_value))
+  }
+}
+
+print(cJaccard_df)
+
+# Saving the results
+write.csv(cJaccard_df, "Malavi.bird.cjaccard.csv")
+```
+
+
+```{r Bird (migratory) Corrected Jaccard Index per Ecoregion (Pairwise)}
+# Estimating the corrected jaccard index of migratory species
+# Subset the dataframe based on migratory species
+result_matrix_m <- result_matrix[, c("X", names(result_matrix)[names(result_matrix) %in% migratory_species])]
+
+# Extracting ecoregion names
+ecoregions <- result_matrix_m$X
+
+# Selecting only the columns with species data
+result_m_matrix <- result_matrix_m[, -1]
+
+# Creating an empty dataframe to store results
+cJaccard_m_df <- data.frame(ecoregion_A = character(),
+                            ecoregion_B = character(),
+                            cJaccard_index = numeric(),
+                            stringsAsFactors = FALSE)
+
+# Corrected Jaccard function (again just in case - we can skip this)
+cJaccard <- function(a, b){
+  intersection <- sum(a & b)
+  possible <- min(sum(a), sum(b))
+  return(intersection / possible)
+}
+
+# Calculating Corrected Jaccard index for pairwise ecoregion comparisons (migratory)
+for (i in 1:(nrow(result_m_matrix) - 1)) {
+  for (j in (i + 1):nrow(result_m_matrix)) {
+    ecoregion_A <- ecoregions[i]
+    ecoregion_B <- ecoregions[j]
+    species_A <- result_m_matrix[i, ]
+    species_B <- result_m_matrix[j, ]
+    cJaccard_value <- cJaccard(species_A, species_B)
+    # Adding the result to the dataframe
+    cJaccard_m_df <- rbind(cJaccard_m_df, data.frame(ecoregion_A = ecoregion_A,
+                                                     ecoregion_B = ecoregion_B,
+                                                     cJaccard_index = cJaccard_value))
+  }
+}
+
+# Writing the corrected Jaccard index dataframe to a CSV file
+write.csv(cJaccard_m_df, "Malavi.M.bird.cJaccard.csv")
+2
+```
+
+```{r Bird (resident) Corrected Jaccard Index per Ecoregion (Pairwise)}
+# Estimating the corrected jaccard index of resident species
+# Subset the dataframe based on resident species
+result_matrix_r <- result_matrix[, c("X", names(result_matrix)[names(result_matrix) %in% resident_species])]
+
+# Extracting ecoregion names
+ecoregions <- result_matrix_r$X
+
+# Selecting only the columns with species data
+result_r_matrix <- result_matrix_r[, -1]
+
+# Creating an empty dataframe to store results
+cJaccard_r_df <- data.frame(ecoregion_A = character(),
+                            ecoregion_B = character(),
+                            cJaccard_index = numeric(),
+                            stringsAsFactors = FALSE)
+
+# Corrected Jaccard function
+cJaccard <- function(a, b){
+  intersection <- sum(a & b)
+  possible <- min(sum(a), sum(b))
+  return(intersection / possible)
+}
+
+# Calculating Corrected Jaccard index for pairwise ecoregion comparisons (residents)
+for (i in 1:(nrow(result_r_matrix) - 1)) {
+  for (j in (i + 1):nrow(result_r_matrix)) {
+    ecoregion_A <- ecoregions[i]
+    ecoregion_B <- ecoregions[j]
+    species_A <- result_r_matrix[i, ]
+    species_B <- result_r_matrix[j, ]
+    cJaccard_value <- cJaccard(species_A, species_B)
+    # Adding the result to the dataframe
+    cJaccard_r_df <- rbind(cJaccard_r_df, data.frame(ecoregion_A = ecoregion_A,
+                                                     ecoregion_B = ecoregion_B,
+                                                     cJaccard_index = cJaccard_value))
+  }
+}
+
+# Writing the corrected Jaccard index dataframe to a CSV file
+write.csv(cJaccard_r_df, "Malavi.R.bird.cJaccard.csv")
+```
+
