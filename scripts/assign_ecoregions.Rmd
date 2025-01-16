@@ -22,8 +22,8 @@ library(here)
 
 ```{r getData}
 #set correct path and uncomment next line to get ecoregions
-ecoReg <- sf::st_read("/Users/dcsuh/Desktop/Terrestrial_Ecoregions/Terrestrial_Ecoregions.shp")
-q <- readr::read_tsv(here("data/MalAvi_9131431.tsv"))
+ecoReg <- sf::st_read("/Users/danielsuh/Desktop/Terrestrial_Ecoregions/Terrestrial_Ecoregions.shp")
+q <- readr::read_tsv(here("data", "MalAvi_9131431.tsv"))
 ecoReg <- sf::st_transform(ecoReg, st_crs(world))
 ```
 
